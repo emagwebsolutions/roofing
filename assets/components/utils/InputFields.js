@@ -72,6 +72,15 @@
 		`
 	}
 
-	export {textInput,textArea,Button,Titlebar}
+	const checkBox = ( classname,labelname ) => {
+		return `
+		<div class="checkbox-group">
+			<input type="checkbox"  class="${classname}" />
+			<label>${labelname}</label>
+		</div>
+		`
+	}
+
+	export {textInput,textArea,Button,Titlebar,checkBox}
 
 

@@ -13,10 +13,27 @@ Animate input field
     margin-bottom: 1.6rem;
     width: 100%;
   }
-  
-  .input-animate input:not(:valid){
-    color: red;
+
+  .checkbox-group{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2em;
+    position: relative;
   }
+
+  .checkbox-group input{
+    accent-color: red;
+    height: 1.7rem;
+    width: 1.7rem;
+  }
+
+  .checkbox-group label{
+    color: hsl(var(--black));
+  }
+  
+  /* .input-animate input:not(:valid){
+    color: red;
+  } */
   
   .input-animate input:not(:placeholder-shown) + label{
     top: -1.9em;
@@ -65,5 +82,15 @@ Animate input field
   .results{
     font-size: 1.6rem;
     text-align: center;
+  }
+
+  .form-title{
+    background-color: #ededed;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    padding: .7em;
+    border-radius: 1rem;
+    margin-block: 1.6em;
+    color: #666;
   }
   

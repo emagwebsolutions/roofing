@@ -1,0 +1,11 @@
+.addUserPrevileges,
+.usersDetails{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.addUserPrevileges div,
+.usersDetails div{
+    flex: 10rem 1 1;
+}

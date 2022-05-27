@@ -10,6 +10,9 @@ import Modalbox from '../widgets/Modalbox.js'
 import Spinner from '../utils/Spinner.js'
 import Error from '../utils/Error.js'
 import Success from '../utils/Success.js'
+import { textInput,checkBox } from '../utils/inputFields.js'
+import Title from '../utils/Title.js'
+
 
 getUsers()
 const obj = JSON.parse(localStorage.getItem('usersDetails'))[0].users_details
@@ -67,6 +70,7 @@ document.addEventListener('click', e => {
     }
 
     if(e.target.matches('.addUser')){
+        document.body.style.overflow = 'hidden'
         classSelector('modal-wrapper').classList.add('show')
     }
 
@@ -74,7 +78,123 @@ document.addEventListener('click', e => {
 
 window.addEventListener('load', e => {
     classSelector('col1').innerHTML = userdetails()
+    classSelector('hiredate').valueAsDate = new Date()
 })
+
+
+const addUserForm = () => (
+    `    
+    ${Title('New User Details')}
+    <div class="usersDetails">
+        <div>
+		 ${
+            textInput({
+                type: 'text',
+                classname: 'firstname',
+                required: true,
+                label: 'First Name'
+            })
+         }
+         ${
+            textInput({
+                type: 'text',
+                classname: 'lastname',
+                required: true,
+                label: 'Last Name'
+            })
+         }
+         ${
+            textInput({
+                type: 'text',
+                classname: 'phone',
+                required: true,
+                label: 'Phone'
+            })
+         }
+         ${
+            textInput({
+                type: 'text',
+                classname: 'residence',
+                required: true,
+                label: 'Residence'
+            })
+         }
+
+         ${
+            textInput({
+                type: 'email',
+                classname: 'email',
+                required: true,
+                label: 'Email'
+            })
+         }
+        </div>
+        <div>
+
+        ${
+            textInput({
+                type: 'date',
+                classname: 'hiredate',
+                required: true,
+                label: 'Hire Date'
+            })
+         }
+
+         ${
+            textInput({
+                type: 'date',
+                classname: 'birthdate',
+                required: true,
+                label: 'Birthdate'
+            })
+         }
+  
+         ${
+            textInput({
+                type: 'text',
+                classname: 'username',
+                required: true,
+                label: 'Username'
+            })
+         }
+         ${
+            textInput({
+                type: 'text',
+                classname: 'password',
+                required: true,
+                label: 'Password'
+            })
+         }
+         ${
+            textInput({
+                type: 'text',
+                classname: 'repassword',
+                required: true,
+                label: 'Re-Password'
+            })
+         }
+        </div>
+    </div>
+
+    ${Title('New User Previlleges')}
+
+    <div class="addUserPrevileges">
+
+    <div> 
+        ${checkBox('salesinvoice','Sales Invoice')}
+        ${checkBox('salesinvoice','Proforma Invoice')}
+        ${checkBox('salesinvoice','Products')}
+    </div>
+    <div> 
+        ${checkBox('salesinvoice','SMS')}
+        ${checkBox('salesinvoice','Leads')}
+        ${checkBox('salesinvoice','Opportunity')}
+    </div>
+
+    </div>
+    
+    `
+)
     
 
 const Employees = () => {
@@ -114,7 +234,7 @@ const Employees = () => {
         </div>
         </div>
 
-        ${Modalbox('ADD USER','addUserModalClass')}
+        ${Modalbox('ADD USER','addUserModalClass', addUserForm())}
         `
 
 }

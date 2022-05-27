@@ -7,6 +7,9 @@ import { classSelector } from "../utils/Selectors.js"
 import { formatDate } from "../utils/DateFormats.js"
 import Buttons from '../utils/Buttons.js'
 import Modalbox from '../widgets/Modalbox.js'
+import Spinner from '../utils/Spinner.js'
+import Error from '../utils/Error.js'
+
 getUsers()
 const obj = JSON.parse(localStorage.getItem('usersDetails'))[0].users_details
 
@@ -46,6 +49,12 @@ const userdetails = ( v ) => {
 
 document.addEventListener('click', e => {
 
+    if(e.target.matches('.addUserModalClass')){
+        Spinner('addUserModalClass')
+
+        Error('addUserModalClass','This is an error message')
+    }
+
     if(e.target.matches('.ufname')){
         const { id } = e.target.dataset
 
@@ -65,12 +74,7 @@ window.addEventListener('load', e => {
 })
     
 
-
-
-
 const Employees = () => {
-
-
 
     const arr = obj.map( v => {
         return Lists({
@@ -107,7 +111,7 @@ const Employees = () => {
         </div>
         </div>
 
-        ${Modalbox('ADD USER')}
+        ${Modalbox('ADD USER','addUserModalClass')}
         `
 
 }

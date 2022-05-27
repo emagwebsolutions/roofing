@@ -3,10 +3,7 @@
 document.addEventListener('click', e => {
     if(e.target.matches('.close-modal')){
         const par = e.target.parentElement.parentElement.parentElement
-        
         par.classList.remove('show')
-     
-
     }
 })
 
@@ -15,8 +12,6 @@ window.addEventListener('click', e => {
         e.target.classList.remove('show')
     }
 })
-
-
 
 const Modalbox = ( title = '', btnclass = '' ) => (
     `

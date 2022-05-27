@@ -40,8 +40,8 @@
 }
 .modal-footer button{
   cursor: pointer;
-  background-color: #888;
-  color: #fff;
+  border: solid 1px #666;
+  color: #666;
   padding: .2em;
   border-radius: 2rem;
 }
@@ -56,6 +56,10 @@ button:hover{
   visibility: hidden;
 }
 
+.modal-btn{
+  text-align: center;
+}
+
 .modal-wrapper.show{
   visibility: visible;
   opacity: 0;
@@ -66,5 +70,9 @@ button:hover{
   to{
     opacity: 1;
   }
+}
+
+.error-color{
+  color: hsl(var(--danger))!important;
 }
 

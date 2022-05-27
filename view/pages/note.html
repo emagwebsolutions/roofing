@@ -1,0 +1,326 @@
+
+<br>
+ <div class="container bg-white" style="min-height: 700px;">
+    <div class="row">
+<div class="col-lg-4 pb-5">
+
+<!---
+======================================
+Begin Profile
+======================================
+--->
+<div class="author-card pb-3 mt-4">
+<div class="author-card-profile pt-4">
+<div class="author-card-avatar">
+<img src="assets/images/no-image.jpg" alt="Profile" id="profile">
+</div>
+<div class="author-card-details">
+<h5 class="author-card-name text-lg text-uppercase" id="fullname"></h5>
+<span class="author-card-position" id="department"></span>
+</div>
+</div>
+</div>
+<!---
+======================================
+End Profile
+======================================
+--->
+
+
+<!---
+======================================
+Begin Menu
+======================================
+--->
+<div class="wizard">
+<nav class="list-group list-group-flush">
+<a href="#tab_2" class="list-group-item" data-toggle="tab">
+<i class="fa fa-pencil"></i>   
+Compose
+</a>
+
+<a class="list-group-item active" href="#tab_1" data-toggle="tab">
+<i class="fa fa-inbox"></i>
+Inbox
+<span class="badge badge-success pull-right inbxunr">
+	
+</span>
+</a>
+<a class="list-group-item" href="#tab_3" data-toggle="tab">
+<i class="fa fa-inbox"></i> Draft
+</a>
+
+
+<a class="list-group-item" href="#tab_4" data-toggle="tab">
+<i class="fa fa-envelope-o"></i> Sent
+</a>
+
+</nav>
+</div>
+<!---
+======================================
+End Menu
+======================================
+--->
+
+</div>
+
+
+<!-- Profile Settings-->
+<div class="col-lg-8 pb-5">
+<div class="tab-content">
+
+<div id="mesres"></div>
+
+	
+
+	<!--========================
+	Begin INBOX
+	=========================-->
+	<div id="tab_1"   class="tab-pane active">
+
+	<div class="jumbotron p-0 mb-0">
+	<div class="row">
+
+	<div class="col-md-1 col-sm-12">
+	<a href="javascript:void(0);"><i class="fa fa-trash fa-sm text-dark deltmesg" data-mpage="inbox"></i></a>
+	</div>
+
+	<div class="col-sm-12 col-md-5">
+	<p class=" text-uppercase font-weight-bold">
+	Inbox
+	</p>
+	</div>
+
+	<div class="col-sm-12 col-md-1"></div>
+	<div class="col-sm-12 col-md-5">
+	<div class="input-group">
+	<input type="text" placeholder="Search by subject"  class=" search form-control" id="inboxinput">
+	</div>
+	</div>
+
+	</div>
+	</div>
+
+
+	<div  class="p-1">
+	<div id="productsScroll">
+
+	<div class="row  bg-light">
+
+	<div class="col-sm-12 col-md-1">
+	<div class="custom-control custom-checkbox" style="margin-top: -14px;">
+	<input type="checkbox" class="custom-control-input checkall" id="diziza">
+	<label class="custom-control-label" for="diziza"></label>
+	</div>
+	</div>
+
+	<div class="col-sm-12 col-md-3">Subject</div>
+	<div class="col-sm-12 col-md-4">From</div>
+	<div class="col-sm-12 col-md-2">Date</div>	
+	<div class="col-sm-12 col-md-2">Size</div>
+	</div>
+
+
+	<div id="inboxoutput"></div>
+
+	</div>
+	</div>
+
+	</div>
+	<!--========================
+	End INBOX
+	=========================-->
+
+<!--========================
+	Begin Compose
+	=========================-->
+	<div id="tab_2" class="tab-pane">
+		<form>
+
+		<div class="jumbotron pt-4 pb-2 bg-light">
+
+		<div class="form-group has-feedback inputBox">
+		<input type="text" autocomplete="off" class="form-control search bg-light to users-list-input" required id="userxx">
+
+		<div class="users-list-bx">
+			<span></span>
+			<ul class="users-list-output"></ul>
+		</div>
+
+		<label for="">To</label>
+		</div> 
+
+		<input type="hidden" id="user_idd">
+
+		<div class="form-group has-feedback inputBox">
+		<input type="text" class="form-control search bg-light" id="subject"   required>
+		<label>Subject:</i></label>	
+		</div>	
+
+		</div>
+
+		<textarea id="message" name="message"></textarea>
+		<script type="text/javascript" src="assets/js/ckeditor/ckeditor.js"></script>
+		<script type="text/javascript">
+		//resize CKEditor with customised height and width
+		CKEDITOR.replace('message',{
+			height: "300px"
+			}
+		);	
+		</script>
+
+		<div id="comp-res"></div>
+
+		<div class="box-footer clearfix">
+		<div class="row">
+		<div class="col-sm-10 col-xs-12">
+		<input type="checkbox" id="save_draft"> <span>Save as Draft</span>			
+		</div>
+		<div class="col-sm-2 col-xs-12">
+		<a href="javascript:void(0);"  class="pull-right btn btn-primary btn-sm comp-btn rounded-lg">
+			<i class="fa fa-send"></i>
+		Send
+		</a>
+		</div>				
+		</div>
+		</div>
+		</form>
+
+	</div>
+	<!--========================
+	End Compose
+	=========================-->
+
+
+
+	<!--========================
+	Begin DRAFT
+	=========================-->
+	<div id="tab_3" class="tab-pane">
+
+	<div class="jumbotron p-0 mb-0">
+	<div class="row">
+
+	<div class="col-md-1 col-sm-12">
+	<a href="javascript:void(0);"><i class="fa fa-trash fa-sm text-dark deltmesg" data-mpage="draft"></i></a>
+	</div>
+
+	<div class="col-sm-12 col-md-5">
+	<p class=" text-uppercase font-weight-bold">
+	Draft
+	</p>
+	</div>
+
+	<div class="col-sm-12 col-md-1"></div>
+	<div class="col-sm-12 col-md-5">
+	<div class="input-group">
+	<input type="text" placeholder="Search by subject"  class=" search form-control" id="draftinput">
+	</div>
+	</div>
+
+	</div>
+	</div>
+
+
+	<div  class="p-1">
+	<div id="productsScroll">
+
+	<div class="row  bg-light">
+
+	<div class="col-sm-12 col-md-1">
+	<div class="custom-control custom-checkbox" style="margin-top: -14px;">
+	<input type="checkbox" class="custom-control-input checkall" id="diziza">
+	<label class="custom-control-label" for="diziza"></label>
+	</div>
+	</div>
+
+	<div class="col-sm-12 col-md-3">Subject</div>
+	<div class="col-sm-12 col-md-4">To</div>
+	<div class="col-sm-12 col-md-2">Date</div>	
+	<div class="col-sm-12 col-md-2">Size</div>
+	</div>
+
+
+	<div id="draftoutput"></div>
+
+	</div>
+	</div>
+
+	</div>
+	<!--========================
+	End DRAFT
+	=========================-->
+
+
+	<!--========================
+	Begin Sent Message
+	=========================-->
+	<div id="tab_4" class="tab-pane">
+
+	<div class="jumbotron p-0 mb-0">
+	<div class="row">
+
+	<div class="col-md-1 col-sm-12">
+	<a href="javascript:void(0);"><i class="fa fa-trash fa-sm text-dark deltmesg" data-mpage="sent"></i></a>
+	</div>
+
+	<div class="col-sm-12 col-md-5">
+	<p class=" text-uppercase font-weight-bold">
+	Sent Messages
+	</p>
+	</div>
+
+	<div class="col-sm-12 col-md-1"></div>
+	<div class="col-sm-12 col-md-5">
+	<div class="input-group">
+	<input type="text" placeholder="Search by subject"  class=" search form-control" id="sentinput">
+	</div>
+	</div>
+
+	</div>
+	</div>
+
+
+	<div  class="p-1">
+	<div id="productsScroll">
+
+	<div class="row  bg-light">
+
+	<div class="col-sm-12 col-md-1">
+	<div class="custom-control custom-checkbox" style="margin-top: -14px;">
+	<input type="checkbox" class="custom-control-input checkall" id="diziza">
+	<label class="custom-control-label" for="diziza"></label>
+	</div>
+	</div>
+
+	<div class="col-sm-12 col-md-3">Subject</div>
+	<div class="col-sm-12 col-md-4">To</div>
+	<div class="col-sm-12 col-md-2">Date</div>	
+	<div class="col-sm-12 col-md-2">Size</div>
+	</div>
+
+
+	<div id="sentoutput"></div>
+
+	</div>
+	</div>
+
+	</div>
+	<!--========================
+	End Sent Message
+	=========================-->
+
+
+
+
+	</div>
+	</div>
+		
+    </div>
+	</div>
+
+	<br>
+
+<script  src="assets/js/note.js" type="module"></script>
+<script src="assets/js/users_list.js"></script>

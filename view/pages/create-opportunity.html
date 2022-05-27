@@ -1,0 +1,171 @@
+<?php
+$cust_id = isset($_GET['c']) ? basename(my_simple_crypt($_GET['c'], 'd')) : '' ; 
+$cst = current_customer($cust_id);
+if(!empty($cst)){
+	foreach($cst as $v){
+	$fullname = $v['fullname'];
+	}
+}
+else{
+	$fullname = "";
+}
+?>
+<br><br><br><br>
+<section class="padding-twenty white-bg">
+<form action="router.php" method="post" id="form-submit" onsubmit="parent.scrollTo(0, 0);   return false">	
+<section class="grey-bg padding-twenty">
+<div  class="container">
+<div class="row">
+<div class="color-grey col-sm-3 col-xs-12">
+<h1 class="color-grey font-size-twenty margin-top-zero text-left">
+Create Opportunity
+</h1>
+</div>
+<div class="col-sm-7 col-xs-12">
+</div>
+<div class="col-sm-2 col-xs-12 text-right">
+ <input type="submit" class="btn btn-primary btn-sm" value="Save" name="submit">
+<a href="javascript:void(0);" onclick="back();"   class="btn btn-danger btn-sm">Cancel</a>
+</div>
+</div>
+</div>
+</section>
+<div class="container">
+	     <div class="result error"></div>
+	    <br>
+		<br>
+		<h4>Opportunity Information</h4>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="contactname" class="form-control" required>
+			<label>Contact Name</label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="city" class="form-control" required>
+			<label>City/Town</label>	
+          </div>
+</div>
+</div>	
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="opp_name" class="form-control" required>
+			<label>Opportunity Name</label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="closing_date" class="form-control calendar" required>
+			<label>Closing Date</label>	
+			<div id="custom-pos"></div>
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+		  <?php
+		  if(!empty($cust_id)){
+		   ?>
+		  <input type="text" name="company" class="form-control"  value="<?php echo $fullname; ?>" required>
+		  <input type="hidden" name="cust_id" id="cust_id" value="<?php echo $cust_id; ?>">
+		  <?php
+		  }
+		  else{
+		  ?>
+            <input type="text" name="company" class="form-control"  id="customer_autocomplete" required autocomplete ="off">
+			<label>Account Name</i></label>	
+			<ul class="customer_autocomplete" style="background: #fff; height: 300px; overflow-y: scroll; overflow-x: none; display: none;  border: 14px #F8F8F8  solid; box-shadow: 4px 4px 4px #ccc;"></ul>
+			<input type="hidden" name="cust_id" id="cust_id">
+		  <?php
+		  }
+		  ?>
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+			<select class="form-control" name="stage">
+						<option>Stage</option>
+						<option>Qualification</option>
+						<option>Needs Analysis</option>
+						<option>Negotiation Review</option>
+						<option>Closed Won</option>
+						<option>Closed Lost</option>						
+						<option>Closed-Lost to competition</option>							
+			</select>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+			<select class="form-control " name="type">
+						<option>Type</option>
+						<option>Existing Business</option>
+						<option>New Business</option>						
+			</select>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="probability" class="form-control" required>
+			<label>Probability (%)</label>	
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="revenue" class="form-control" required>
+			<label>Expected Revenue (GHs)</label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+			<select class="form-control" name="lead_source">
+						<option>Lead Source</option>
+						<option>Advertisement</option>
+						<option>Cold Call</option>
+						<option>Employee Referral</option>
+						<option>External Referral</option>
+						<option>Online Store</option>
+						<option>Partner</option>
+						<option>Public Relations</option>
+						<option>Email</option>
+						<option>Seminar</option>
+						<option>Trade Show</option>						
+						<option>Web Research</option>							
+						<option>Chat</option>							
+			</select>
+          </div>
+</div>
+</div>
+</div>
+	<input type="hidden" name="unqidfr" value="<?php echo $unqidfr; ?>">
+	<input type="hidden" name="task" value="add_opportunity">
+	<input type="hidden" name="controller" value="crm">
+<br><br>
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+<h4>Description </h4>
+	<textarea class="textarea" name="description" placeholder="Description" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="message"></textarea>
+</div>
+</div>
+</div>
+<br><br>
+<section class="grey-bg padding-twenty">
+<div  class="container">
+<div class="row">
+<div class="color-grey col-sm-2 col-xs-12">
+</div>
+<div class="col-sm-8 col-xs-12">
+</div>
+<div class="col-sm-2 col-xs-12 text-right">
+ <input type="submit" class="btn btn-primary btn-sm" value="Save" name="submit">
+<a href="?page=leads" class="btn btn-danger btn-sm">Cancel</a>
+</div>
+</div>
+</div>
+</section>
+</form>
+  </section>

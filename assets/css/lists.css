@@ -1,0 +1,36 @@
+.list{
+  display: flex;
+  flex-wrap: wrap;
+  padding-block: .5em;
+  font-size: 1.2rem;
+}
+
+.list a{
+  color: #666;
+}
+
+
+
+.list > div:nth-of-type(1){
+  flex: 17rem 1 1;
+}
+
+.list > div:nth-of-type(2){
+  flex: 5rem 1 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start!important;
+  align-items: center;
+  gap: .8rem;
+}
+
+.scroll-wrapper{
+  padding: 1em;
+  margin: .6em;
+}
+
+.scroll-inner{
+  height: 50rem;
+  overflow-y: scroll;
+  overflow-x: none;
+}

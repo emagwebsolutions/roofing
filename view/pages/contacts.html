@@ -1,0 +1,110 @@
+<section class="p-4">
+<div class="container bg-white">
+
+<div class="row">
+<div class="col-sm-12 col-md-2">
+<p class="lead text-uppercase font-weight-bold">
+	CONTACTS
+</p>
+</div>
+
+<div class="col-sm-12 col-md-4">
+		<div class="input-group">
+		<input type="text" placeholder="Search Contacts"  class=" search form-control" id="searchbox">
+		</div>
+</div>
+
+<div class="col-sm-12 col-md-2">
+<a href="javascript:void(0);" id="view_pdf" class="btn btn-danger btn-sm rounded-lg">View PDF</a>
+</div>
+<div class="col-sm-12 col-md-4">
+
+	<!-- Begin Customer Filter  -->
+	<button class="btn btn-default rounded-lg btn-sm dropdown-toggle mr-4" type="button" data-toggle="dropdown"
+	aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i> Filter by contact owner</button>
+	<div class="dropdown-menu" id="itemslists">
+	</div>
+	<!-- End Customer Filter -->
+
+</div>
+
+
+
+</div>
+
+<div  class="grid-striped p-3">
+<div id="productsScroll">
+
+<div class="row   table-header">
+<div class="col-sm-12 col-md-3">Name</div>
+<div class="col-sm-12 col-md-3">Email</div>
+<div class="col-sm-12 col-md-2">Phone</div>	
+<div class="col-sm-12 col-md-2">Location</div>
+<div class="col-sm-12 col-md-2">Assigned to</div>
+</div>
+
+<div id="contdisplay"></div>
+
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
+<!--=======================================
+BEGIN VIEW NOTE MODAL BOX
+========================================-->
+
+<div id="noteModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-l">
+		<div class="modal-content  p-4">
+		<div class="p-2 shadow">
+			<div class="modal-header bg-light">
+				<h5 class="h4">PROFILE OF: <span id="title"></span></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>	
+		<div class="row">  
+		<div class="col-sm-12 col-md-4">
+
+			<div class="main-section text-center">
+				<div class="row">
+					<div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+				</div>
+				<div class="row user-detail">
+					<div class="col-lg-12 col-sm-12 col-12">
+						<img src="assets/images/avatar.png" class="rounded-circle img-thumbnail">
+						<h5 id="cust-name">John Addison</h5>
+						<p class="m-0"><i class="fa fa-map-marker" aria-hidden="true"></i> <span id="cust-location"></span></p>
+
+						<p class="mt-0"><i class="fa fa-phone" aria-hidden="true"></i><span id="cust-phone"></span></p>
+	  
+					
+					</div>
+				</div>
+	
+			</div>
+
+
+		</div>
+		<div class="col-sm-12 col-md-8">
+		<div  id="notex" class="w-100 border probx"></div>
+		</div>
+
+	</div>
+		</div>
+		</div>
+		</div>
+		</div>		
+		</div>
+	
+<!--=======================================
+END VIEW NOTE MODAL BOX
+========================================-->
+
+
+
+<input type="hidden" id="user_id">
+<script src="assets/js/contact.js"></script>

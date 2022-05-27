@@ -1,0 +1,1485 @@
+<br><br><br><br>
+<section class="padding-twenty">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12 white-bg">
+<div class="padding-twenty">
+
+
+
+
+
+	<?php 
+	if( isset($_GET['i']) &&  isset($_GET['e']) ){
+		$ids = basename(my_simple_crypt($_GET['i'], 'd'));
+		$entry_no = basename(my_simple_crypt($_GET['e'], 'd'));	
+	}
+	else{
+	$ids = "";
+	$entry_no = "";
+	}
+	?>
+	
+	
+	<?=$ids."<br>"; ?>
+	
+	<?=$entry_no."<br>"; ?>
+
+
+
+
+
+
+
+
+<form onsubmit="parent.scrollTo(0, 0);   return false" class="clearinput">
+<div class="row">
+<div class="col-sm-3 col-xs-12">
+<div class="form-group  inputBox">
+<input type="text" class="form-control calendar" required>
+<label>DATE</label>
+	<div id="custom-pos"></div>
+</div>
+</div>
+<div class="col-sm-3 col-xs-12">
+<div class="form-group  inputBox">
+<input type="text" class="form-control entry_no" required>
+<label>ENTRY NO.</label>
+</div>
+</div>
+<div class="col-sm-6 col-xs-12">
+</div>
+</div>
+<div class="row">
+				<div class ="table_wrapper black-bg color-white padding-top-ten padding-bottom-ten">				 
+				 <div class="col-sm-3  col-xs-12">ACCOUNT</div>
+				 <div class="col-sm-2  col-xs-12  padding-left-five">DEBIT</div>
+				 <div class="col-sm-2  col-xs-12  padding-left-five">CREDIT</div>
+			  <div class="col-sm-3  col-xs-12  padding-left-five">DESCRIPTION</div>
+				<div class="col-sm-2  col-xs-12 padding-left-five">NAME</div>
+		</div>		
+</div>
+<div class="row">
+				 <div class="height-1800  prod_search_res">
+				 <table class="table table-bordered table-striped journalentry">
+				 <tbody>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+				<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit1">
+				 <input type="hidden" id="ids" value="credit1">
+				 <input type="hidden" id="curstatus">				 
+				 </p>
+				 </td>
+				 
+				 
+
+				 
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 				
+				<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">				
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit2">
+				 <input type="hidden" id="ids" value="credit2">
+				 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+					<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+			<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit3">
+				 <input type="hidden" id="ids" value="credit3">
+				<input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+					<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit4">
+				 <input type="hidden" id="ids" value="credit4">
+				 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit5">
+				 <input type="hidden" id="ids" value="credit5">
+				 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+					 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit6">
+				  <input type="hidden" id="ids" value="credit6">
+				<input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+							<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit7">
+				  <input type="hidden" id="ids" value="credit7">
+				<input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit8">
+				  <input type="hidden" id="ids" value="credit8">
+				<input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit9">
+				  <input type="hidden" id="ids" value="credit9">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+				<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit10">
+				  <input type="hidden" id="ids" value="credit10">
+							 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit11">
+				  <input type="hidden" id="ids" value="credit11">
+							 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit12">
+				  <input type="hidden" id="ids" value="credit12">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+					 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit13">
+				  <input type="hidden" id="ids" value="credit13">
+								 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit14">
+				  <input type="hidden" id="ids" value="credit14">
+							 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit15">
+				  <input type="hidden" id="ids" value="credit15">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+				<input type="hidden" id="original_open_balance">	
+				<input type="hidden" id="acc_type">
+				<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit16">
+				  <input type="hidden" id="ids" value="credit16">
+							 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit17">
+				  <input type="hidden" id="ids" value="credit17">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit18">
+				  <input type="hidden" id="ids" value="credit18">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit19">
+				  <input type="hidden" id="ids" value="credit19">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit20">
+				  <input type="hidden" id="ids" value="credit20">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit21">
+				  <input type="hidden" id="ids" value="credit21">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit22">
+				  <input type="hidden" id="ids" value="credit22">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit23">
+				  <input type="hidden" id="ids" value="credit23">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit24">
+				  <input type="hidden" id="ids" value="credit24">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit25">
+				  <input type="hidden" id="ids" value="credit25">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 	 
+				 <tr class="" id="">
+				<td class="col-sm-3 general_journal">
+				<div id="vbx" class="padding-left-eight padding-right-eight">
+				<select class="form-control  journalaccounts  account">
+				</select>
+				<div class="general-journal-bx">
+				</div>
+				<p id=""> 
+								<input type="hidden" id="ac_id">
+				<input type="hidden" id="open_balance">
+						<input type="hidden" id="original_open_balance">
+				<input type="hidden" id="acc_type">
+						<input type="hidden" id="entry_cat">	
+				</p>
+				</div>
+				</td>
+				<!---------------------------
+				Begin Debit 
+				--------------------------->
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn1 genj">
+				 <p id=""> 
+				 <input type="text" class="form-control debit" title ="debit" id="">
+				 </p>
+				 </td>
+				<!--------------------------- 
+				End Debit 
+				--------------------------->				 
+				<!--------------------------- 
+				Begin Credit 
+				--------------------------->				
+				 <td class="col-sm-2  col-xs-12  padding-left-five jn2  genj">
+				 <p id=""> 
+				 <input type="text" class="form-control credit" title ="credit" id="credit26">
+				  <input type="hidden" id="ids" value="credit26">
+						 <input type="hidden" id="curstatus">
+				 </p>
+				 </td>
+				<!-------------------------- 
+				End Credit
+				--------------------------->				 
+			     <td class="col-sm-3  col-xs-12  padding-left-five">
+				 <input type="text" class="form-control description">
+				 </td>
+				 <td class="col-sm-2  col-xs-12 padding-left-five">
+				 <input type="text" class="form-control name">
+				 </td>
+				 </tr>
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 </tbody>
+				 <tbody>
+				 </tbody>
+				 </table>
+				 </div>
+				</div>
+
+
+		
+				
+				<input type="hidden" id="opbalance">
+				
+				<div class="row text-left font-size-fourteen">
+				
+				<div class="col-sm-3  col-xs-12">TOTAL</div>
+				<div class="col-sm-2  col-xs-12  padding-left-five debit-total">0.00</div>
+				<div class="col-sm-2  col-xs-12  padding-left-five credit-total">0.00</div>
+				<div class="col-sm-3  col-xs-12  padding-left-five jresult jerror"></div>
+				<div class="col-sm-2  col-xs-12 padding-left-five">
+				<input type="hidden" class="user_id" value="<?php echo $_SESSION['edfghl']; ?>">
+				<a href="javascript:void()" onclick="save_journal();"  class="btn btn-primary  btn-sm pull-right" id="submit">Save Journal Entry</a>				
+				</div>
+				
+				
+				</div>
+				
+				
+				
+			 </form>
+				</div>
+</div>
+</div>
+</div>
+  </section>
+<script type="text/javascript" src="assets/js/available.js"></script>
+<?php stocks_timer(); ?>

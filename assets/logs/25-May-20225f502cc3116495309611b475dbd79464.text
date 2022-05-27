@@ -1,0 +1,28 @@
+
+Date: 25 May 2022
+Time: 18:39:45
+SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'user_mang' in where clause is ambiguous
+ SQL ERROR:
+SELECT h.*, u.firstname,u.lastname FROM history as h JOIN users_details as u ON u.user_id = h.user_id WHERE h.user_id =? OR user_mang = ?
+
+
+Date: 25 May 2022
+Time: 18:39:43
+SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'user_mang' in where clause is ambiguous
+ SQL ERROR:
+SELECT h.*, u.firstname,u.lastname FROM history as h JOIN users_details as u ON u.user_id = h.user_id WHERE h.user_id =? OR user_mang = ?
+
+
+Date: 25 May 2022
+Time: 18:36:55
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM history WHERE user_id ='1' OR user_mang = '1'' at line 1
+ SQL ERROR:
+SELECT h.*, FROM history WHERE user_id =? OR user_mang = ?
+
+
+Date: 25 May 2022
+Time: 17:29:18
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '? OR user_mang = ?' at line 1
+ SQL ERROR:
+SELECT * FROM history WHERE user_id =? OR user_mang = ?
+

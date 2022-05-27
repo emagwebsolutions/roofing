@@ -1,0 +1,69 @@
+
+/*
+Animate input field
+*/
+.input-animate{
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .input-animate input{
+    border-radius: 4rem;
+    font-size: 1.2rem;
+    padding: .5em;
+    margin-bottom: 1.6rem;
+    width: 100%;
+  }
+  
+  .input-animate input:not(:valid){
+    color: red;
+  }
+  
+  .input-animate input:not(:placeholder-shown) + label{
+    top: -1.9em;
+    left: .8rem;
+    font-size: 1rem!important;
+    font-weight: bold;
+  }
+  
+  .input-animate label{
+    position: absolute;
+    top: .5em;
+    left: 1.3rem;
+    transition: .3s;
+    pointer-events: none;
+    font-size: 1.2rem;
+  }
+  
+  .input-animate input:focus + label{
+    top: -1.7em;
+    left: .8rem;
+    font-size: 1rem!important;
+    font-weight: bold;
+  }
+  
+  
+  .button-rounded{
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    width: 100%!important;
+    background-color: #222;
+    padding: 1rem;
+    display: none;
+  }
+  
+  .button-rounded:hover{
+    background-color: #fff!important;
+    color: #222!important;
+  }
+
+  .fa-spin{
+    font-size: 3rem;
+    margin-inline: auto;
+    margin: .3rem;
+    color: #000;
+  }
+  .results{
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  

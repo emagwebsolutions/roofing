@@ -1,0 +1,396 @@
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-10 m-auto ">	
+	<div class=" bg-white p-4">
+	<!--===================================
+	BEGIN INVOICE TITLE
+	===================================--->
+	<div class="row">
+	<div class="col-12">
+	<span class="font-weight-bold lead text-muted text-uppercase">PROFORMA</span> 
+	<br>
+	</div>
+	</div>
+	<!--===================================
+	END INVOICE TITLE
+	===================================--->
+	
+	<!--===================================
+	BEGIN BACK BUTTON
+	===================================--->
+	<div class="col-12">
+		<div class=" bg-light p-3">
+
+		<div class="row">
+		<div class="col-sm-12 col-md-1">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm proinvoicePrint">
+		<i class="fa fa-print fa-lg"></i> PRINT
+		</a>
+		</div>
+
+		<div class="col-sm-12 col-md-1">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm proinvoicePdf">PDF</a>	
+		</div>
+				
+		<div class="col-sm-12 col-md-7">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm  proinvoiceEmail">
+			<i class="fa fa-envelope fa-lg"></i> EMAIL</a>
+		<span class="email-proforma"></span>
+		</div>
+	
+		<div class="col-sm-12 col-md-1">
+		<span class="lead"></span> &nbsp;&nbsp; 
+		<a href="javascript:void(0);" title="Refresh" id="refresh">
+		<i class="fa fa-refresh fa-lg"></i>
+		</a>
+		</div>
+
+		<div class="col-sm-12 col-md-2 text-right">
+		<a href="javascript:void(0);" onclick="goBack();" class="btn btn-default btn-sm "><< Go Back</a>
+		</div>
+
+		</div>
+	
+		</div>
+		</div>
+	<!--===================================
+	END BACK BUTTON
+	===================================--->
+
+   
+	<div class="row">
+	<div class="col-md-4">
+
+	<!--===================================
+	BEGIN CUSTOMERS LIST
+	===================================--->
+	<div class="input-group p-relative">
+		<input type="text" placeholder="Customers" autocomplete="off"  class=" search form-control customer-list-input" id="customers">
+		
+		<div class="customers-list-bx">
+			<a href="javascript:void(0);" data-toggle="modal" data-target="#customerModal" class="ncust">Add New Cusomer</a>
+			<ul class="customers-list-output"></ul>
+		</div>
+
+		</div>
+	<!--===================================
+	END CUSTOMERS LIST
+	===================================--->
+	
+	</div>
+	<div class="col-md-4">
+	
+	</div>
+	<div class="col-md-4 col-xs-12">
+	</div>
+	</div>
+	<div class="row">
+    <!--===================================
+	BEGIN INVOICE TO
+	===================================--->
+	<div class="col-sm-12" id="results">
+	<div class="p-3 bg-light lead">
+	Invoice to: <span class="invto"></span>
+	</div>
+	</div>
+	<!--===================================
+	END INVOICE TO
+	===================================--->
+
+	</div>
+  		<!--===================================
+	BEGIN TAXES
+	===================================--->
+	<div class="row">
+		<div class="col-md-6">
+	
+			<div class="form-group  inputBox">
+				<input type="text" id="covid" class="search covid graTaxes form-control" value="">
+				<label class="mt-1">COVID</i></label>	
+			</div>
+	
+	
+		<div class="form-group  inputBox">
+		<input type="text" id="nhil"  class="search form-control nhil graTaxes" value="">
+		<label class="mt-1">NHIL %<i>(Optional)</i></label>	
+		</div>	
+		<div class="form-group  inputBox">
+		<input type="text" id="getfund" class="search form-control getfund graTaxes" value="">
+		<label class="mt-1">GETFUND %<i>(Optional)</i></label>	
+		</div>	
+		<div class="form-group  inputBox">
+		<input type="text" id="vatinp" class="search form-control vatinp graTaxes" value="">
+		<label class="mt-1">VAT  %<i>(Optional)</i></label>	
+		</div>	
+	
+		</div>
+		<div class="col-md-6">
+	
+			<div class="form-group has-feedback inputBox">
+				<input type="text" id="discountinpt" class="search discountinpt graTaxes form-control" value="" >
+				<label class="mt-1">DISCOUNT % <i>(Optional)</i></label>	
+			</div>	
+		
+			<div class="form-group has-feedback inputBox">
+				<input type="text" class="search form-control project" value="" required>
+				<label>PROJECT NAME</label>	
+			</div>
+	
+			<div class="form-group has-feedback inputBox">
+				<input type="text" class="search form-control pro_date calendar"  required>
+				<label>INVOICE DATE:</label>	
+				<div id="custom-pos"></div>
+			</div>	
+	
+			<div class="form-group has-feedback inputBox">
+				<input type="text" class="search exp_date form-control calendar2" value="">
+				<label class="mt-1">RENEWAL/PAYMENT DATE</label>	
+				<div id="custom-pos2"></div>
+			</div>
+	
+		</div>
+		
+		</div>
+		<!--===================================
+		END TAXES
+		===================================--->
+	<div class="row">
+	<div class="col-md-12">
+	<form>
+	<!--===================================
+	BEGIN PRODUCT BOX
+	===================================--->
+	<div class="row ">
+		<div class="pl-0 col-sm-6 form-group">
+			<input type="text" placeholder="Select Item" autocomplete="off" required autofocus class="form-control search items-lists-bx3">
+			<ul class="items-lists3"></ul>
+			<input type="hidden"   class="cat_name"/>
+		</div>
+		</div>
+	<!--===================================
+	END PRODUCT BOX
+	===================================--->
+	
+	<!--===================================
+	BEGIN TABLE HEADER
+	===================================--->
+	<div class="row bg-dark text-white">
+	<div class="col-md-1">Qty</div>
+	<div class="col-md-4">Description</div>
+	<div class="col-md-2">Duration</div>
+	<div class="col-md-2">Unit Price</div>
+	<div class="col-md-2">Amount</div>
+	<div class="col-md-1 bg-white"></div>
+	</div>
+	<!--===================================
+	END TABLE HEADER
+	===================================--->
+	
+	<!--===================================
+	BEGIN TABLE BODY
+	===================================--->
+	<div id="tBody">
+
+	</div>
+	<!--===================================
+	END TABLE BODY
+	===================================--->
+	<!--===================================
+	BEGIN TABLE FOOTER
+	===================================--->
+	<div class="tbFooter">
+	<div class="row">
+	<div class="col-md-7"></div>
+
+	<div class="col-md-2 p-0 text-right pr-2">Sub Total</div>
+
+	<div class="col-md-2 border border-top-0 p-0">
+	<input type="text" readonly  value="" id="subtotal"  class="form-control text-right  subtotal   totalall border-0"/>
+	</div>
+
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">Discount</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text"  readonly   id="discount" value=""  class="discount  form-control text-right border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">NHIL</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly  value=""  id="nhils" class="nhils form-control text-right  totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-7  p-0"></div>
+		<div class="col-md-2  p-0 text-right pr-2"">COVID</div>
+		<div class="col-md-2 border  border-top-0 p-0">
+		<input type="text" readonly  value=""  id="covids" class="covids form-control text-right  totalall border-0"/>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	
+	<div class="col-md-2  p-0 text-right pr-2"">Getfund</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly value=""  id="getfunds" class="form-control text-right getfunds  totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">VAT</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly  value=""   id="vat" class="form-control text-right vat totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2">Total GHs</div>
+	<div class="col-md-2 border  border-top-0 p-0"> 
+	<input type="text" readonly id="grandtotal" value="" class="form-control text-right  grandtotal border-0"/>  
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	</div>
+	<!--===================================
+	END TABLE FOOTER
+	===================================--->
+	
+	<!--===================================
+	BEGIN SHOW RESULT
+	===================================--->
+	<div class="row">
+	<div class="col-sm-11">
+	<div id="result"></div>
+	</div>
+	</div>
+	<!--===================================
+	END SHOW RESULT
+	===================================--->
+	<div class="row">
+	<!--===================================
+	BEGIN HIDDEN INPUTS
+	===================================--->
+	<input type="hidden" class="ac_id" value="">	
+	<input type="hidden" class="user_id" value="1">
+	<input type="hidden" class="cust_id" value="">
+	<input type="hidden" class="task" value="add_proforma">
+	<!--===================================
+	BEGIN HIDDEN INPUTS
+	===================================--->
+	<div class="col-md-9">
+		<textarea id="message" placeholder="Add Note" class="message form-control"></textarea>
+	</div>
+	<div class="col-md-3">
+	<div class="p-4">
+	<!--===================================
+	BEGIN SUBMIT BUTTON
+	===================================--->
+	<a href="javascript:void(0);" id="save_invoice"  class="btn btn-default  btn-sm pull-right mr-5 saveinvoice">Save Invoice</a>
+	<input type="hidden" id="update_invoice">
+	<!--===================================
+	BEGIN SUBMIT BUTTON
+	===================================--->
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>	
+
+	<!--===================================
+	BEGIN ADD CUSTOMER MODAL BOX 
+	===================================--->
+	<div id="customerModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+        <div class="modal-content  p-4">
+		<div class="p-2 shadow">
+		<!------------------------
+		Begin Modal Button
+		------------------------->
+        <div class="modal-header bg-light">
+        <h5 class="h2" id="title">New Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>	
+		<!------------------------
+		End Modal Button
+		------------------------->
+	     <div id="cresult"></div>
+	    <br>
+		<form>	
+        <div class="modal-body">
+		<div class="row">
+
+		<div class="col-md-6">
+
+		<div class="form-group  inputBox  pt-0">		  
+		<input type="text" class="form-control search customer-list-input" id="fullname" name="fullname"   required autocomplete="off">
+		
+		<div class="customers-list-bx">
+			<span></span>
+			<ul class="customers-list-output"></ul>
+		</div>
+		<label for="fullname">Fullname</label>
+		</div>
+		<div class="form-group  inputBox pt-0">			 
+		<input type="text" id="phone" class="form-control search" name="phone"   required>
+		<label for="phone">Phone</label>				   
+		</div>	
+		</div>
+		<div class="col-md-6">
+		<div class="form-group  inputBox pt-0">		
+		<input type="email" id="emailxs" class="form-control search" placeholder="Optional" name="email">	
+		<label for="email">Email</label>				   
+		</div>
+		<div class="form-group  inputBox pt-0">	
+		<input type="text" id="location" class="form-control search" name="location"  required>
+		<label  for="location">Location</label>	
+		</div>	
+		</div>
+		</div>
+		</div>
+		<div class="modal-footer">
+        <a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+        <a href="javascript:void(0);" id="button" class="btn btn-default btn-sm AddCustomer">Add Customer</a>
+        </div>
+		</form>
+		</div>
+        </div>
+        </div>
+        </div>		
+        </div>
+	<!--===================================
+	END ADD CUSTOMER MODAL BOX 
+	===================================--->
+	<script src="assets/js/pos.js" type="module"></script>
+	<script src="assets/js/invoice.js" type="module"></script>
+	<script src="assets/js/cust_list.js" type="module"></script>
+	<script src="assets/js/email-pdf-print.js"></script>
+

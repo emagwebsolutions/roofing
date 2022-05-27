@@ -1,0 +1,62 @@
+.settings-wrapper{
+    width: 100vw;
+    height: 100vh;
+}
+
+.heading-title{
+    padding: .7rem;
+    background-color: #eee;
+    font-size: 1.8rem!important;
+    text-align: center;
+    color: #666;
+    margin-bottom: 1em;
+
+}
+
+.navbar-wrapper{
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+}
+
+.settings-inner{
+    padding: 3em;
+}
+
+
+.settings-header{
+    background-color: #777;
+    margin-bottom: 3em;
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+}
+
+.settings-header::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(0,0%,0%, .5);
+    left: 0;
+    top: 0;
+}
+
+.settings-logo{
+    width: 9rem;
+    height: 6rem;
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    background-color: #ccc;
+    transform: translateY(-50%);
+}
+
+.comp-title{
+    color: white;
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+}

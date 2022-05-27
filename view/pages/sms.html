@@ -1,0 +1,106 @@
+<section class="p-4">
+	<div class="container bg-white shadow">
+
+		<div class="row">
+			<div class="col-md-10 col-sm-12 m-auto">
+				<div class="row">
+
+					<div class="col-sm-12 col-md-6">
+						<a href="javascript:void(0);" class="shadow btn btn-block btn-warning" data-toggle="modal" data-target="#smsModal">
+							ADD EXISTING CONTACTS TO MESSAGE
+						</a>
+						<br>
+					<textarea  id="message" placeholder="Message" class="form-control" style="height: 150px;"></textarea>
+
+					<br>
+					Total characters entered: <span id="character"></span>
+
+					<br><br>
+					<div id="result"></div>
+					<br>
+					<a href="javascript:void(0);" id="sendSms" class="btn btn-warning btn-sm">
+						SEND MESSAGE
+					</a>
+
+					</div>
+
+					<div class="col-sm-12 col-md-6">
+
+					<div class="p-2" style="margin-bottom: 22px; font-weight: bold;">
+						SMS Balance: <span id="sms_balance">0</span>
+					</div>
+
+						
+					<textarea  id="cust-contacts" placeholder="Enter mobile numbers seperated by commas" class="form-control" style="height: 150px;"></textarea>
+					<br>
+					Number of Messages Per Recipient: <span id="smsCount"></span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
+	<!--=======================================
+	BEGIN CONTACTS
+	========================================-->
+			
+			<div id="smsModal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-l">
+					<div class="modal-content  p-4">
+					<div class="p-2 shadow">
+
+						<div class="modal-header bg-light">
+							<h5 id="title">Add Selected Contacts</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<br>	
+
+				<form>
+
+
+				<div  class="container">
+				
+				
+				<div class="row bg-light">
+				<div class="col-sm-12 col-md-2">
+				<div class="custom-control custom-checkbox" style="margin-top: -14px;">
+				<br>
+				<input type="checkbox" class="custom-control-input checkall" id="diziza">
+				<label class="custom-control-label" for="diziza">.</label>
+				</div>
+				</div>
+				
+				<div class="col-sm-12 col-md-5">Name</div>
+				<div class="col-sm-12 col-md-5">Mobile Number</div>	
+				</div>
+					
+				<div id="allcontacts" class="smsScroll"></div>
+				</div>
+
+		<div id="result2"></div>
+		
+		<div class="modal-footer">
+		<a href="javascript:void(0);" class="btn btn-warning shadow btn-sm" data-dismiss="modal">CLOSE</a>
+		<a href="javascript:void(0);" class="btn btn-warning shadow btn-sm 
+		addContacts">ADD SELECTED CONTACTS</a>
+		</div>
+		</form>
+
+
+
+</div>
+</div>
+</div>
+</div>		
+</div>
+
+<input type="hidden" id="smsbalance">
+
+<!--=======================================
+END CONTACTS
+========================================-->
+
+<script type="module" src="assets/js/sms.js"></script>
+	

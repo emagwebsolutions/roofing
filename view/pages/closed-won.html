@@ -1,0 +1,358 @@
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-12 m-auto ">	
+	<div class=" bg-white p-4">
+	<div class="row">
+	<div class="col-md-3 col-sm-12 pb-5">
+	<!----===========================================
+	BEGIN SIDEBAR LINKS
+	=============================================--->
+		<div class="wizard mt-4">
+		<opp-sidebar></opp-sidebar>
+		</div>
+	
+	<!----===========================================
+	END SIDEBAR LINKS
+	=============================================--->
+	
+	<br><br>
+	<!----===========================================
+	BEGIN CLOSING DATE
+	=============================================--->
+	<p class="font-weight-bold text-center mt-3">CLOSING DATES</p>
+	<div class="closing-date-main" id="closingdate">
+		<closing-date></closing-date>
+	</div>
+	<!----===========================================
+	END CLOSING DATE
+	=============================================--->
+	</div>
+	
+	<div class="col-md-9 col-sm-12">	
+	<!----===========================================
+	BEGIN SEARCH AND TOTAL BOX
+	=============================================--->
+	<div class="row">
+	<div class="col-sm-12 col-md-4">
+	<p class="font-weight-bold">TOTAL: <span id="opp-total"></span></p>
+		</div>
+		<div class="col-sm-12 col-md-3"></div>
+		<div class="col-sm-12 col-md-5">
+			<!----------------------
+			Begin Product Search
+			------------------------>
+			<div class="input-group">
+			<input type="text" placeholder="Search by Company"  class=" search form-control" id="leadsearch">
+			</div>	
+			<!----------------------
+			End Product Search
+			------------------------>
+		</div>
+	</div>
+	<!----===========================================
+	END SEARCH AND TOTAL BOX
+	=============================================--->
+	
+	
+	
+	<!----===========================================
+	BEGIN CALL TO ACTION BUTTONS
+	=============================================--->
+	<div class="bg-light">
+	<div class="row">
+	
+	
+	<div class="col-md-6 col-sm-12">
+	<a href="javascript:void(0);" class="btn btn-sm btn-default deleteRec"><i class="fa fa-trash ta-sm"></i> Delete</a>
+	<a href="" class="btn btn-sm btn-default " data-toggle="modal" data-target="#oppModal">
+	<i class="fa fa-pencil ta-sm"></i> Create Opportunity</a>
+	<a href="" class="btn btn-sm btn-default openEmailBox" data-toggle="modal" data-target="#emailModal"><i class="fa fa-envelope ta-sm"></i> Send Email</a>
+	</div>
+	
+	<div class="col-sm-12 col-md-3">
+	<!-- Begin Lead Filter  -->
+	<button  class="btn btn-default rounded-lg btn-sm dropdown-toggle dropd mr-4" type="button" data-toggle="dropdown"
+	aria-haspopup="true" aria-expanded="off"><i class="fa fa-user fa-lg"></i> Filter by lead owner</button>
+	<div class="dropdown-menu" id="itemslists">
+	</div>
+	<input type="hidden" id="cat" value="closed-won">
+	<!-- End Lead Filter -->
+
+	</div>
+	
+	<div class="col-sm-12 col-md-3">
+	<strong id="lead_title">ALL OPPORTUNITIES</strong>
+	</div>
+	</div>
+	<div class="clearfix"></div>
+	</div>
+	<!----===========================================
+	END CALL TO ACTION BUTTONS
+	=============================================--->
+	
+	
+	
+	<!----===========================================
+	BEGIN ROWS
+	=============================================--->
+		<div  class="grid-striped">
+			<div id="productsScroll">
+			<div class="row   table-header">
+			
+			<div class="col-sm-12 col-md-1">
+			<div class="custom-control custom-checkbox">
+			<input type="checkbox" class="custom-control-input checkall" id="diziza">
+			<label class="custom-control-label text-muted" for="diziza">#</label>
+			</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-3">OPPORTUNITY NAME</div>
+			<div class="col-sm-12 col-md-2">STAGE</div>
+			<div class="col-sm-12 col-md-2">CLOSING DATE</div>	
+			<div class="col-sm-12 col-md-2">CONTACT NAME</div>
+			<div class="col-sm-12 col-md-2">CITY</div>
+			</div>
+			
+			<div id="oppOutput"></div>
+			</div>
+	
+			</div>
+			</div>
+	<!----===========================================
+	BEGIN ROWS
+	=============================================--->
+	
+	
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	
+		<!--===================================
+		BEGIN CREATE OPPORTUNITY
+		===================================--->
+	
+		<div id="oppModal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-l">
+			<div class="modal-content  p-4">
+			<div class="p-2 shadow">
+	
+			<!------------------------
+			Begin Modal Button
+			------------------------->
+			<div class="modal-header bg-light">
+			<h5 class="h2" id="title">Opportunity Information</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>	
+			<!------------------------
+			End Modal Button
+			------------------------->
+	
+			
+			<br>
+			<form>	
+			<div class="modal-body">
+	
+			<div class="row">
+	
+	
+		   
+			<div class="col-md-6 col-sm-12">
+				<div class="  inputBox">
+				<input type="text" id="contactname" class="search form-control" required autocomplete="off">
+				<label>Contact Name</label>	
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="  inputBox">
+				<input type="text" id="city" class="search form-control" required>
+				<label>City/Town</label>	
+				</div>
+			</div>
+		
+			<div class="col-md-6 col-sm-12">
+				<div class="inputBox">
+				<input type="text" id="opp_name" class="search form-control" required>
+				<label>Opportunity Name</label>	
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="  inputBox">
+				<input type="text" id="closing_date" class="search form-control calendar" required>
+				<label>Closing Date</label>	
+				<div id="custom-pos"></div>
+				</div>
+			</div>
+			
+			<div class="col-md-6 col-sm-12">
+				<div class="form-group  inputBox  pt-0">		  
+				   <input type="text" id="companys" autocomplete="off" class="search form-control items-lists-bx"   required>
+				   <label>Company</label>		  
+			   </div>
+			   <ul id="items-lists"></ul>
+	  		</div>
+			<div class="col-md-6 col-sm-12">
+				<select class="form-control search"  id="stage">
+				<option>Select Stage</option>
+				<option>Qualification</option>
+				<option>Needs Analysis</option>
+				<option>Negotiation Review</option>
+				<option>Closed Won</option>
+			    <option>Closed Lost</option>						
+				<option>Closed-Lost to competition</option>							
+				</select>
+			</div>
+			
+			<div class="col-md-6 col-sm-12">
+			<select class="form-control search" id="type">
+			<option>Select Type</option>
+			<option>Existing Business</option>
+			<option>New Business</option>						
+			</select>
+			
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="  inputBox">
+				<input type="text" id="probability" class="search form-control" required>
+				<label>Probability (%)</label>	
+				</div>
+			</div>
+	
+			<div class="col-md-6 col-sm-12">
+				<div class="  inputBox">
+				<input type="text" id="revenue" class="search form-control" required>
+				<label>Expected Revenue (GHs)</label>	
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<select class="form-control search" id="lead_source">
+				<option>Select Lead Source</option>
+				<option>Lead Source</option>
+				<option>Advertisement</option>
+				<option>Cold Call</option>
+				<option>Employee Referral</option>
+				<option>External Referral</option>
+				<option>Online Store</option>
+				<option>Partner</option>
+				<option>Public Relations</option>
+				<option>Email</option>
+				<option>Seminar</option>
+				<option>Trade Show</option>						
+				<option>Web Research</option>							
+				<option>Chat</option>							
+				</select>
+				
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="  inputBox">
+				<input type="email" id="emails" class="search form-control">
+				<label>Email</label>	
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="  inputBox">
+				<input type="text" id="phone" class="fon search form-control" required>
+				<label>Phone</label>	
+				</div>
+			</div>
+						
+			</div>
+		   <br>
+		
+		   <div class="row">
+		   <div class="col-sm-12">
+		   <h4>Description </h4>
+			<textarea class="textarea" id="description" placeholder="Description" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="description"></textarea>
+		   </div>
+		   </div>
+		
+		   
+	
+			<div id="results"></div>
+			</div>
+	
+	
+			<div class="modal-footer">
+			<a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+			<a href="javascript:void(0);"  class="btn btn-default btn-sm addOpp">Add Opportunity</a>
+			</div>
+			</form>
+			
+			</div>
+			</div>
+			</div>
+			</div>		
+			
+		<!--===================================
+		END CREATE OPPORTUNITY
+		===================================--->
+	
+	
+	
+	<!--===================================
+	BEGIN EMAIL MODAL BOX 
+	===================================--->
+	<div id="emailModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+        <div class="modal-content  p-4">
+		<div class="p-2 shadow">
+		<!------------------------
+		Begin Modal Button
+		------------------------->
+        <div class="modal-header bg-light">
+	<h3 class="box-title  emerror emresult"> <i class="fa fa-envelope"></i> Quick Email</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>	
+		<!------------------------
+		End Modal Button
+		------------------------->
+		<form>	
+        <div class="modal-body">
+			<div class="box box-info">
+				<div class="box-body">
+				<form>	
+					<div class="form-group inputBox">
+					  <input type="text" class="form-control" id="subject" required>
+						  <label>Subject</label>	
+					</div>
+					<div class="form-group inputBox">
+					  <input type="email" class="mail form-control" id="semail" required>
+						  <label>Email</label>	
+					</div>
+							
+					<div>
+					  <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="smessage"></textarea>
+					</div>
+		
+			</form>
+				</div>
+			  </div>
+<div id="eresult"></div>
+		</div>
+		<div class="modal-footer">
+        <a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+        <a href="javascript:void(0);"  class="btn btn-default btn-sm 
+         sendEmail">Send Email</a>
+        </div>
+		</form>
+		</div>
+        </div>
+        </div>
+        </div>		
+        </div>
+	<!--===================================
+	END EMAIL MODAL BOX 
+	===================================--->
+	
+	<script src="assets/js/items-dropdown.js"></script>
+	<script  src="assets/js/opportunity.js" type="module"></script>
+	<script  src="assets/js/checkall-crm.js"></script>
+	<script  src="assets/js/email-crm.js" type="module"></script>
+	<script  src="assets/components/crm-sidebar.js" type="module"></script>
+	<script  src="assets/js/search-crm.js" type="module"></script>
+	

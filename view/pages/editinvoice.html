@@ -1,0 +1,565 @@
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-10 m-auto ">	
+	<div class=" bg-white p-4">
+	<!--===================================
+	BEGIN INVOICE TITLE
+	===================================--->
+	<div class="row">
+	<div class="col-12">
+	<span class="font-weight-bold lead text-muted text-uppercase">EDIT INVOICE</span> 
+	<br>
+	</div>
+	</div>
+	<!--===================================
+	END INVOICE TITLE
+	===================================--->
+	
+	
+	<!--===================================
+	BEGIN BACK BUTTON
+	===================================--->
+	<div class="col-12">
+		<div class=" bg-light p-3">
+
+		<div class="row">
+		<div class="col-sm-12 col-md-1">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm invoicePrint">
+		<i class="fa fa-print fa-lg"></i> PRINT
+		</a>
+		</div>
+
+		<div class="col-sm-12 col-md-1">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm invoicePdf">PDF</a>	
+		</div>
+				
+		<div class="col-sm-12 col-md-7">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm invoiceEmail">
+			<i class="fa fa-envelope fa-lg"></i> EMAIL</a>
+		<span class="email-invoice"></span>
+		</div>
+	
+		<div class="col-sm-12 col-md-1">
+		<span class="lead"></span> &nbsp;&nbsp; 
+		<a href="javascript:void(0);" title="Refresh" id="refresh">
+		<i class="fa fa-refresh fa-lg"></i>
+		</a>
+		</div>
+
+		<div class="col-sm-12 col-md-2 text-right">
+		<a href="javascript:void(0);" onclick="goBack();" class="btn btn-default btn-sm "><< Go Back</a>
+		</div>
+
+		</div>
+	
+		</div>
+		</div>
+	<!--===================================
+	END BACK BUTTON
+	===================================--->
+
+	<div class="row">
+
+	<div class="col-md-4">
+	<div class="cust-res">
+	<!--===================================
+	BEGIN CUSTOMERS LIST
+	===================================--->
+	<div class="input-group p-relative">
+		<input type="text" placeholder="Customers" autocomplete="off"  class=" search form-control customer-list-input" id="customers">
+		
+		<div class="customers-list-bx">
+			<a href="javascript:void(0);" data-toggle="modal" data-target="#customerModal" class="ncust">Add New Cusomer</a>
+			<ul class="customers-list-output"></ul>
+		</div>
+
+		</div>
+	<!--===================================
+	END CUSTOMERS LIST
+	===================================--->
+	</div>
+	</div>
+
+
+
+	<div class="col-md-4">
+	<!--===================================
+	BEGIN ACCOUNT
+	===================================--->
+	<div id="invoice_account" class="acac">
+		<div class="form-group">
+		<!-- Begin account field and result box -->
+		<input type="text" autocomplete="off" placeholder="Accounts Receivable"   class="form-control search accounts_receivable_search">
+		
+		<div class="accounts_receivable_bx">
+			<a href="javascript:void(0);"  data-toggle="modal" data-target="#accModal">Add new account</a>
+			<div></div>
+		</div>
+		<!-- End account field and result box -->
+		<input type="hidden" class="ac_id" value="">
+		<input type="hidden" class="account_type" placeholder="Account Type">
+		<input type="hidden" class="open_balance" id="open_balance" placeholder="Open Balance">
+		<input type="hidden" class="groups" id="groups" placeholder="Groups">
+		<input type="hidden" id="income_account" placeholder="Income Account" />
+        </div>
+	</div>
+
+	<!--===================================
+	END ACCOUNT
+	===================================--->
+	</div>
+
+
+	<div class="col-md-4 col-sm-12">
+	</div>
+	</div>
+
+	<div class="row">
+    <!--===================================
+	BEGIN INVOICE TO
+	===================================--->
+	<div class="col-md-6" id="results">
+		<div class="p-3 bg-light lead">
+		Invoice to: <span class="invto"></span>
+		</div>
+		</div>
+		<!--===================================
+		END INVOICE TO
+		===================================--->
+		<!--===================================
+		BEGIN SELECTED ACCOUNT
+		===================================--->
+		<div class="col-md-6 acac">
+		<div class="p-3 bg-light lead ">
+		Account: <span class="accname" style="font-size: 11px; font-weight: bold;"></span>
+		</div>
+		</div>
+		<!--===================================
+		END SELECTED ACCOUNT
+		===================================--->
+	</div>
+  	<!--===================================
+	BEGIN TAXES
+	===================================--->
+	<div class="row">
+	<div class="col-md-6">
+	<div class="form-group  inputBox">
+	<input type="text" id="nhil"  class="search form-control nhil graTaxes" value="">
+	<label class="mt-1">NHIL %<i>(Optional)</i></label>	
+	</div>	
+	<div class="form-group  inputBox">
+	<input type="text" id="getfund" class="search form-control getfund graTaxes" value="">
+	<label class="mt-1">GETFUND %<i>(Optional)</i></label>	
+	</div>	
+	<div class="form-group  inputBox">
+	<input type="text" id="vatinp" class="search form-control vatinp graTaxes" value="">
+	<label class="mt-1">VAT  %<i>(Optional)</i></label>	
+	</div>	
+	<div class="form-group has-feedback inputBox">
+	<input type="text" id="discountinpt" class="search discountinpt graTaxes form-control" value="" >
+	<label class="mt-1">DISCOUNT % <i>(Optional)</i></label>	
+	</div>	
+	</div>
+	<div class="col-md-6">
+	
+	<div class="form-group has-feedback inputBox">
+	<input type="text" class="search form-control project"  required>
+	<label>PROJECT NAME</label>	
+	</div>
+	<div class="form-group has-feedback inputBox">
+	<input type="text" class="search form-control pro_date calendar"  required>
+	<label>START DATE:</label>	
+	<div id="custom-pos"></div>
+	</div>	
+	<div class="form-group has-feedback inputBox">
+	<input type="text" class="search exp_date form-control calendar2" value="">
+	<label class="mt-1">END DATE </label>	
+	<div id="custom-pos2"></div>
+	</div>
+	<div class="form-group has-feedback inputBox divr">
+	<input type="text" id="tduration" class="search tduration form-control" value="">
+	<label class="mt-1">TOTAL DURATION</i></label>	
+	</div>
+	</div>
+	
+	</div>
+	<!--===================================
+	END TAXES
+	===================================--->
+	<div class="row">
+	<div class="col-md-12">
+	<form>
+ 		<!--===================================
+	BEGIN PRODUCT BOX
+	===================================--->
+	<div class="row ">
+		<div class="pl-0 col-sm-6 form-group">
+			<input type="text" placeholder="Select Item" autocomplete="off" required autofocus class="form-control search items-lists-bx3">
+			<ul class="items-lists3"></ul>
+			<input type="hidden"   class="cat_name"/>
+		</div>
+		</div>
+		<!--===================================
+		END PRODUCT BOX
+		===================================--->
+	
+	<!--===================================
+	BEGIN TABLE HEADER
+	===================================--->
+	<div class="row bg-dark text-white">
+	<div class="col-md-1">Qty</div>
+	<div class="col-md-4">Description</div>
+	<div class="col-md-2">Duration</div>
+	<div class="col-md-2">Unit Price</div>
+	<div class="col-md-2 text-right">Amount</div>
+	<div class="col-md-1 bg-white"></div>
+	</div>
+	<!--===================================
+	END TABLE HEADER
+	===================================--->
+	
+	<!--===================================
+	BEGIN TABLE BODY
+	===================================--->
+	<div id="tBody">
+
+
+
+		
+	<div class="row prodInvoice">
+
+	<div class="prodCalc col-sm-1 border border-right-0 p-0">
+	<input type="text" autocomplete="off"  required  class="p_qty form-control border-0"/>
+	<input type="hidden" class="p_qty2"/>
+	</div>
+
+	<div class="prodName col-sm-3 border border-right-0 p-0">
+		<input type="text" autocomplete="off"required  class="prod_name form-control border-0 items-lists-bx3">
+		<ul class="items-lists3"></ul>
+		<input type="hidden"  class="cat_name"/>
+	</div>
+
+	<div class="col-md-2 border border-right-0 p-0 prodCalc">
+	<input type="text"  required  class="duration form-control border-0"/>
+	</div>
+
+	<div class="col-md-2 border border-right-0 p-0  prodCalc">
+	<input type = "text" required   class="price form-control border-0">
+	</div>
+
+	<div class="col-md-2 border  p-0 tot">
+	<input type="text" readonly    class="form-control text-right  tt border-0 total" />
+	<input type="hidden"  class="prod_id"/>
+	</div>
+
+	<div class="col-md-1 p-0 bg-white"> 
+	<a href="javascript:void(0);" class="deleteRow" ><i class="fa fa-trash fa-xs ml-3 text-dark delete1" title="Delete Row"></i></a>
+	<input type="hidden"  class="s_id"/>
+	</div>
+
+	</div>
+
+	</div>
+	<!--===================================
+	END TABLE BODY
+	===================================--->
+	<!--===================================
+	BEGIN TABLE FOOTER
+	===================================--->
+	<div class="tbFooter">
+	<div class="row">
+	<div class="col-md-7"></div>
+
+	<div class="col-md-2 p-0 text-right pr-2">Sub Total</div>
+
+	<div class="col-md-2 border border-top-0 p-0">
+	<input type="text" readonly  value="" id="subtotal"  class="form-control text-right  subtotal   totalall border-0"/>
+	</div>
+
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">Discount</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text"  readonly   id="discount" value=""  class="discount  form-control text-right border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">NHIL</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly  value=""  id="nhils" class="nhils form-control text-right  totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	
+	<div class="col-md-2  p-0 text-right pr-2"">Getfund</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly value=""  id="getfunds" class="form-control text-right getfunds  totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">VAT</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly  value=""   id="vat" class="form-control text-right vat totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2">Total GHs</div>
+	<div class="col-md-2 border  border-top-0 p-0"> 
+	<input type="text" readonly id="grandtotal" value="" class="form-control text-right  grandtotal border-0"/>  
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	</div>
+	<!--===================================
+	END TABLE FOOTER
+	===================================--->
+	
+	<!--===================================
+	BEGIN SHOW RESULT
+	===================================--->
+	<div class="row">
+	<div class="col-sm-11">
+	<div id="result"></div>
+	</div>
+	</div>
+	<!--===================================
+	END SHOW RESULT
+	===================================--->
+	<div class="row">
+	<!--===================================
+	BEGIN HIDDEN INPUTS
+	===================================--->
+	<input type="hidden" class="ac_id" value="">	
+	<input type="hidden" class="user_id" value="">
+	<input type="hidden" class="cust_id" value="">
+	<input type="hidden" class="note_id">
+	<input type="hidden" class="task" value="update_invoice">
+	<input type="hidden" id="message" class="message">
+	<input type="hidden"  id="invoice_no">
+	<!--===================================
+	END HIDDEN INPUTS
+	===================================--->
+	<div class="col-md-7">
+	</div>
+	<div class="col-md-5">
+	<div class="p-4">
+	<!--===================================
+	BEGIN SUBMIT BUTTON
+	===================================--->
+	<a href="javascript:void(0);" id="update_invoice"  class="btn btn-default  btn-sm pull-right mr-5">Update Invoice</a>
+
+	<input type="hidden" id="save_invoice">
+	<!--===================================
+	BEGIN SUBMIT BUTTON
+	===================================--->
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>	
+
+
+
+
+
+
+	<!--===================================
+	BEGIN ADD CUSTOMER MODAL BOX 
+	===================================--->
+	<div id="customerModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+        <div class="modal-content  p-4">
+		<div class="p-2 shadow">
+		<!------------------------
+		Begin Modal Button
+		------------------------->
+        <div class="modal-header bg-light">
+        <h5 class="h2" id="title">New Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>	
+		<!------------------------
+		End Modal Button
+		------------------------->
+	     <div id="cresult"></div>
+	    <br>
+		<form>	
+        <div class="modal-body">
+		<div class="row">
+
+		<div class="col-md-6">
+
+		<div class="form-group  inputBox  pt-0">		  
+		<input type="text" class="form-control search customer-list-input" id="fullname" name="fullname"   required autocomplete="off">
+		
+		<div class="customers-list-bx">
+			<span></span>
+			<ul class="customers-list-output"></ul>
+		</div>
+		<label for="fullname">Fullname</label>
+		</div>
+		<div class="form-group  inputBox pt-0">			 
+		<input type="text" id="phone" class="form-control search" name="phone"   required>
+		<label for="phone">Phone</label>				   
+		</div>	
+		</div>
+		<div class="col-md-6">
+		<div class="form-group  inputBox pt-0">		
+		<input type="email" id="emailxs" class="form-control search" placeholder="Optional" name="email">	
+		<label for="email">Email</label>				   
+		</div>
+		<div class="form-group  inputBox pt-0">	
+		<input type="text" id="location" class="form-control search" name="location"  required>
+		<label  for="location">Location</label>	
+		</div>	
+		</div>
+		</div>
+		</div>
+		<div class="modal-footer">
+        <a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+        <a href="javascript:void(0);" id="button" class="btn btn-default btn-sm 
+         AddCustomer">Add Customer</a>
+        </div>
+		</form>
+		</div>
+        </div>
+        </div>
+        </div>		
+        </div>
+	<!--===================================
+	END ADD CUSTOMER MODAL BOX 
+	===================================--->
+
+	<!--===================================
+	BEGIN ACCOUNT MODAL BOX
+	===================================--->
+	<div id="accModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+        <div class="modal-content  p-4">
+		<div class="p-2 shadow">
+		<!------------------------
+		Begin Modal Button
+		------------------------->
+        <div class="modal-header bg-light">
+        <h4 id="acctitle">Accounts Receivable</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>	
+		<!------------------------
+		End Modal Button
+		------------------------->
+		<div class="modal-body acc-modal-body">
+			<div class="row border-bottom">
+				<div class="col-md-6 pt-0 pb-1">
+				<div class="form-group inputBox">
+				<input type="text" readonly list="account_type5" class="acc search form-control account_typev" value="Accounts Receivable" autocomplete="off">
+				</div>
+				</div> 
+				</div>
+				<div class="row">
+				<div class="col-sm-12 col-md-6 pt-2 pb-1">
+				<div class="form-group inputBox">
+				<input type="text" required autocomplete="off"  class="account_namev search form-control">
+				<label>Account Name</label>
+				</div>
+				</div>
+				<div class="col-sm-12 col-md-6 pt-2 pb-1">
+				<div class="form-group inputBox sac">
+				<input type="text" required   class="sub_accountv search form-control search_sub_account" data-account_type ="Accounts Receivable" autocomplete="off">
+				<label>Subaccount of</label>
+				<div class="sub_acc_search_results"></div>
+				</div>
+				</div>
+				</div>
+				<div class="row">
+				<div class="col-sm-12 pt-0">
+				<textarea class="form-control descriptionv"  placeholder="Description"></textarea>
+				</div>
+				</div>
+		</div>
+		<div id="acc_result"></div>
+		<div class="modal-footer acc-modal-footer">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+		<a href="javascript:void(0);" class="updateinvoice save_account btn btn-default btn-sm">Save</a>
+		</div>
+		</div>
+        </div>
+        </div>
+        </div>		
+        </div>
+	<!--===================================
+	END ACCOUNT MODAL BOX
+	===================================--->
+	<script src="assets/js/invoice-display.js"></script>
+	<script src="assets/js/invoice.js" type="module"></script>
+
+	<script src="assets/js/pos.js"></script>
+
+	<script src="assets/js/response.js"></script>
+	<script src="assets/js/email-pdf-print.js"></script>
+	<script src="assets/js/cust_list.js" type="module"></script>
+	<script src="assets/js/create-account.js" type="module"></script>
+	<script src="assets/js/account_search.js" type="module"></script>
+	<script>
+	/*====================================
+	BEGIN TOTAL DURATION CALCULATION
+	====================================*/
+	document.getElementById('tduration').addEventListener('keyup', e =>{
+		const start_date = document.querySelector('.pro_date');
+		const end_date = document.querySelector('.exp_date');
+
+		if(start_date.value){
+			var sdat = new Date(start_date.value);
+		}
+		else{
+			alert('Start Date required!');
+			e.target.value = null;
+			return;
+		}
+		
+		sdat.setMonth(sdat.getMonth() + Number(e.target.value));
+		if(e.target.value){
+			const xm = sdat.getMonth()+1;
+			const xd = sdat.getDate();
+			const xy = sdat.getFullYear();
+			var xmnth = (xm < 10)? '0'+xm : xm;
+			var xdate = (xd < 10)? '0'+xd : xd;
+			end_date.value = `${xmnth}/${xdate}/${xy}`;
+		}
+		else{
+			end_date.value = null;
+		}
+	});
+	/*====================================
+	END TOTAL DURATION CALCULATION
+	====================================*/
+
+	</script>
+
+

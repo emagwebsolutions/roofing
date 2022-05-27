@@ -1,0 +1,149 @@
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8 bg-white">
+        <form>
+		<div class="row">
+
+		<!-----------------------------------------------
+			Start User details display 
+		------------------------------------------------>
+		<div class="col-md-9">
+
+		<h6 class="h4 mb-0">General</h6>
+		<p class="mb-3">Setup your general profile details.</p>	
+		
+		<div class="row">
+										
+        <div class="col-md-6">
+			<label for="firstname" class="text-muted" >First Name</label>
+            <div class="form-gp">
+            <input type="text"  id="firstname"   required>
+            </div>
+        </div>
+					   
+					   
+        <div class="col-md-6">
+            <label for="lastname" class="text-muted" >Last Name</label>						
+            <div class="form-gp">
+            <input type="text"  id="lastname"   required>
+            </div>
+        </div>	
+
+
+        <div class="col-md-6">
+            <label for="location" class="text-muted" >Location</label>
+            <div class="form-gp">
+            <input type="text"  id="location"   required>
+            </div>
+        </div>
+					   
+					   
+        <div class="col-md-6">
+            <label for="phone" class="text-muted" >Phone Number</label>						
+            <div class="form-gp">
+            <input type="tel"  id="phone"   required>
+            </div>
+        </div>
+					   
+					   
+        <div class="col-md-6">
+            <label for="email2" class="text-muted" >Email</label>						
+            <div class="form-gp">
+            <input type="text"  id="email2"  required>
+            </div>
+        </div>
+					   
+					   
+        <div class="col-md-6">
+	        <label for="lastname" class="text-muted" >Username</label>
+            <div class="form-gp">
+            <input type="text"  id="username"   required>
+            </div>
+        </div>
+					   
+					   
+		<div class="col-md-6">
+            <label for="password" class="text-muted" >New Password</label>					  
+            <div class="form-gp">
+            <input type="password"  id="password" autocomplete="off">
+            </div>
+        </div>
+					   
+					   
+        <div class="col-md-6">
+            <label for="repassword" class="text-muted"  autocomplete="off">Retype Password</label>						
+            <div class="form-gp">
+            <input type="password"  id="repassword">
+            </div>
+        </div>	
+
+        </div>
+		</div>
+		<!-----------------------------------------------
+			End User details display 
+		------------------------------------------------>
+
+		<!-----------------------------------------------
+			Start file upload
+		------------------------------------------------>
+		<div class="col-md-3">
+						
+			<!-- Upload profile picture	 -->
+			<div class="text-center">
+			
+			<!-- Profile image -->
+			<img src="assets/images/noimage.jpeg" alt="User profile picture" class="img-circle img-thumbnail ppic" id="profilepic">
+
+			<h6>Upload profile photo</h6>
+			<label for="fileUpload" class="file-upload btn btn-primary btn-sm rounded-pill shadow text-white">
+			<i class="fa fa-upload mr-2"></i>Upload Profile..
+			<input id="fileUpload" type="file" class="text-center center-block file-upload">
+			</label>
+			</div>
+			<br>
+	  
+			<!-- Upload signature -->
+			<div class="text-center">
+			<!-- signature image -->
+			<img src="assets/images/noimage.jpeg" alt="User profile picture" class="img-circle img-thumbnail spic" id="signpic">
+
+			<h6>Upload signature</h6>
+
+			<label for="fileUploadx" class="file-upload btn btn-primary btn-sm rounded-pill shadow text-white">
+			<i class="fa fa-upload mr-2"></i>Upload Signature
+			<input id="fileUploadx" type="file"  class="text-center center-block file-upload2">
+			</label>
+			</div>  
+			<input type="hidden" id="user_id">
+	
+		</div>	
+		<!-----------------------------------------------
+			End file upload 
+		------------------------------------------------>
+
+			</div>
+								
+			<div class="col-md-12">		
+			<div id="result"></div>		
+					   
+			<div class="submit-btn-area">
+
+			<a href="javascript:void(0);" id="update_profile" class="d-block">
+				Update Profile<i class="ti-arrow-right"></i>
+			</a>
+
+            </div>
+			</div>
+					   
+			</form>
+			</div>
+			</div>
+
+	</div>
+<!---------------------------------------------------------------
+Begin IMAGE UPLOAD
+---------------------------------------------------------------->
+<br>
+
+<script src="assets/js/profile.js" type="module"></script>

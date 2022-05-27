@@ -1,0 +1,16 @@
+.top-btns{
+  display: flex;
+
+}
+
+.top-btns button{
+  width: 10rem;
+  background-color: #777;
+  font-size: 1.2rem;
+  color: white;
+  text-transform: uppercase;
+  padding: .3em;
+  border-radius: 1.4rem;
+  margin: .6em;
+  cursor: pointer;
+}

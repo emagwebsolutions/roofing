@@ -1,0 +1,16 @@
+.detailsbox{
+  font-size: 1.2rem;
+}
+
+.detailsbox ul li > ul{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.detailsbox ul li > ul >li:nth-of-type(1){
+  flex: 5rem 1 1;
+}
+.detailsbox ul li > ul >li:nth-of-type(2){
+  flex: 20rem 1 1;
+}

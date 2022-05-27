@@ -1,0 +1,334 @@
+<style>
+	.deleteRow{
+		display: none;
+	}
+</style>
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-10 m-auto ">	
+	<div class=" bg-white p-4">
+	<!--===================================
+	BEGIN INVOICE TITLE
+	===================================--->
+	<div class="row">
+	<div class="col-12">
+	<span class="font-weight-bold lead text-muted text-uppercase">INVOICE</span> 
+	<br>
+	</div>
+	</div>
+	<!--===================================
+	END INVOICE TITLE
+	===================================--->
+	
+
+
+	<!--===================================
+	BEGIN BACK BUTTON
+	===================================--->
+	<div class="col-12">
+		<div class=" bg-light p-3">
+
+		<div class="row">
+		<div class="col-sm-12 col-md-1">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm invoicePrint">
+		<i class="fa fa-print fa-lg"></i> PRINT
+		</a>
+		</div>
+
+		<div class="col-sm-12 col-md-1">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm invoicePdf">PDF</a>	
+		</div>
+				
+		<div class="col-sm-12 col-md-7">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm invoiceEmail">
+			<i class="fa fa-envelope fa-lg"></i> EMAIL</a>
+		<span class="email-invoice"></span>
+		</div>
+	
+		<div class="col-sm-12 col-md-1">
+		<span class="lead"></span> &nbsp;&nbsp; 
+		<a href="javascript:void(0);" title="Refresh" id="refresh">
+		<i class="fa fa-refresh fa-lg"></i>
+		</a>
+		</div>
+
+		<div class="col-sm-12 col-md-2 text-right">
+		<a href="javascript:void(0);" onclick="goBack();" class="btn btn-default btn-sm "><< Go Back</a>
+		</div>
+
+		</div>
+	
+		</div>
+		</div>
+	<!--===================================
+	END BACK BUTTON
+	===================================--->
+   
+	<div class="row">
+	<div class="col-md-4">
+	
+	
+	
+	</div>
+	<div class="col-md-4">
+	
+	</div>
+	<div class="col-md-4 col-xs-12">
+	</div>
+	</div>
+	<div class="row">
+    <!--===================================
+	BEGIN INVOICE TO
+	===================================--->
+	<div class="col-md-6" id="results">
+	<div class="p-3 bg-light lead">
+	Invoice to: <span class="invto"></span>
+	</div>
+	</div>
+	<!--===================================
+	END INVOICE TO
+	===================================--->
+    <!--===================================
+	BEGIN SELECTED ACCOUNT
+	===================================--->
+	<div class="col-md-6 acac">
+	<div class="p-3 bg-light lead ">
+	Account: <span class="accname"></span>
+	</div>
+	</div>
+	<!--===================================
+	END SELECTED ACCOUNT
+	===================================--->
+	</div>
+  	<!--===================================
+	BEGIN TAXES
+	===================================--->
+	<div class="row">
+	<div class="col-md-6">
+	<div class="form-group  inputBox">
+	<input type="text" id="nhil"  class="search form-control nhil graTaxes" value="">
+	<label class="mt-1">NHIL %<i>(Optional)</i></label>	
+	</div>	
+	<div class="form-group  inputBox">
+	<input type="text" id="getfund" class="search form-control getfund graTaxes" value="">
+	<label class="mt-1">GETFUND %<i>(Optional)</i></label>	
+	</div>	
+	<div class="form-group  inputBox">
+	<input type="text" id="vatinp" class="search form-control vatinp graTaxes" value="">
+	<label class="mt-1">VAT  %<i>(Optional)</i></label>	
+	</div>	
+	<div class="form-group has-feedback inputBox">
+	<input type="text" id="discountinpt" class="search discountinpt graTaxes form-control" value="" >
+	<label class="mt-1">DISCOUNT % <i>(Optional)</i></label>	
+	</div>	
+	</div>
+	<div class="col-md-6">
+	
+	<div class="form-group has-feedback inputBox">
+	<input type="text" class="search form-control project" value="" required>
+	<label>PROJECT NAME</label>	
+	</div>
+	<div class="form-group has-feedback inputBox">
+	<input type="text" class="search form-control pro_date calendar"  required   value="03/30/2020">
+	<label>START DATE:</label>	
+	<div id="custom-pos"></div>
+	</div>	
+	<div class="form-group has-feedback inputBox">
+	<input type="text" class="search exp_date form-control calendar2" value="">
+	<label class="mt-1">END DATE </label>	
+	<div id="custom-pos2"></div>
+	</div>
+	<div class="form-group has-feedback inputBox divr">
+	<input type="text" id="tduration" class="search tduration form-control" value="">
+	<label class="mt-1">TOTAL DURATION</i></label>	
+	</div>
+	</div>
+	
+	</div>
+	<!--===================================
+	END TAXES
+	===================================--->
+	<div class="row">
+	<div class="col-md-12">
+	<form>
+ 	
+	
+	<!--===================================
+	BEGIN TABLE HEADER
+	===================================--->
+	<div class="row bg-dark text-white">
+	<div class="col-md-1">Qty</div>
+	<div class="col-md-4">Description</div>
+	<div class="col-md-2">Duration</div>
+	<div class="col-md-2">Unit Price</div>
+	<div class="col-md-2 text-right">Amount</div>
+	<div class="col-md-1 bg-white"></div>
+	</div>
+	<!--===================================
+	END TABLE HEADER
+	===================================--->
+	
+	<!--===================================
+	BEGIN TABLE BODY
+	===================================--->
+	<div id="tBody">
+
+
+
+		
+	<div class="row prodInvoice">
+
+	<div class="prodCalc col-sm-1 border border-right-0 p-0">
+	<input type="text" autocomplete="off"  required  class="p_qty form-control border-0"/>
+	<input type="hidden" class="p_qty2"/>
+	</div>
+
+	<div class="prodName col-sm-4 border border-right-0 p-0">
+	<input type="text" autocomplete="off" list="prod_autocomplete"  required class="prod_name form-control border-0" id="prod_name"/>
+	<datalist class="prod_autocomplete" id="prod_autocomplete">
+	</datalist>
+	<input type="hidden"  class="cat_name"/>
+	</div>
+
+	<div class="col-md-2 border border-right-0 p-0 prodCalc">
+	<input type="text"  required  class="duration form-control border-0"/>
+	</div>
+
+	<div class="col-md-2 border border-right-0 p-0  prodCalc">
+	<input type = "text" required   class="price form-control border-0">
+	</div>
+
+	<div class="col-md-2 border  p-0 tot">
+	<input type="text" readonly    class="form-control text-right  tt border-0 total" />
+	<input type="hidden"  class="prod_id"/>
+	</div>
+
+	<div class="col-md-1 p-0 bg-white"> 
+	
+	</div>
+
+	</div>
+	<div id="biggy"></div>
+	</div>
+	<!--===================================
+	END TABLE BODY
+	===================================--->
+	<!--===================================
+	BEGIN TABLE FOOTER
+	===================================--->
+	<div class="tbFooter">
+	<div class="row">
+	<div class="col-md-7"></div>
+
+	<div class="col-md-2 p-0 text-right pr-2">Sub Total</div>
+
+	<div class="col-md-2 border border-top-0 p-0">
+	<input type="text" readonly  value="" id="subtotal"  class="form-control text-right  subtotal   totalall border-0"/>
+	</div>
+
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">Discount</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text"  readonly   id="discount" value=""  class="discount  form-control text-right border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">NHIL</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly  value=""  id="nhils" class="nhils form-control text-right  totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	
+	<div class="col-md-2  p-0 text-right pr-2"">Getfund</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly value=""  id="getfunds" class="form-control text-right getfunds  totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2"">VAT</div>
+	<div class="col-md-2 border  border-top-0 p-0">
+	<input type="text" readonly  value=""   id="vat" class="form-control text-right vat totalall border-0"/>
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	<div class="row">
+	<div class="col-md-7  p-0"></div>
+	<div class="col-md-2  p-0 text-right pr-2">Total GHs</div>
+	<div class="col-md-2 border  border-top-0 p-0"> 
+	<input type="text" readonly id="grandtotal" value="" class="form-control text-right  grandtotal border-0"/>  
+	</div>
+	<div class="col-md-1"></div>
+	</div>	
+
+
+	</div>
+	<!--===================================
+	END TABLE FOOTER
+	===================================--->
+	
+
+	<div class="row">
+	<!--===================================
+	BEGIN HIDDEN INPUTS
+	===================================--->
+	<input type="hidden" class="ac_id" value="">	
+	<input type="hidden" class="user_id" value="">
+	<input type="hidden" class="cust_id" value="">
+	<input type="hidden" class="task" value="update_invoice">
+	<input type="hidden" id="message" class="message">
+	<input type="hidden"  id="invoice_no">
+	<input type="hidden" id="income_account"/>
+
+
+
+	
+		<input type="hidden" class="account_type" placeholder="Account Type">
+		<input type="hidden" class="open_balance" id="open_balance" placeholder="Open Balance">
+		<input type="hidden" class="groups" id="groups" placeholder="Groups">
+
+
+	<!--===================================
+	BEGIN HIDDEN INPUTS
+	===================================--->
+	<div class="col-md-7">
+	</div>
+	<div class="col-md-5">
+	<div class="p-4">
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>	
+
+
+
+	<script src="assets/js/invoice-display.js"></script>
+	<script src="assets/js/email-pdf-print.js"></script>
+
+	

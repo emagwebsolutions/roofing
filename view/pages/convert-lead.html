@@ -1,0 +1,153 @@
+<section class="bg-white p-3">
+<section class="bg-light p-2">
+<div  class="container ">
+<div class="row">
+<div class="col-md-6 col-sm-12">
+<h1 class="text-muted lead text-left">
+<strong>Convert Lead</strong>  <small id="leadname"></small>
+</h1>
+</div>
+<div class="col-md-6 col-sm-12 text-right">
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+<section class="bg-white p-3">
+<div class="container">
+<form>
+
+
+<div class="row">
+<div class="col-sm-12 col-md-6"></div>
+
+<div class="col-sm-12 col-md-6">
+<label class="chk-container">
+<input type="checkbox" id="cust-checkbox"><span> Create customer account</span> 
+<span class="checkmark"></span>
+</label>
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="row">
+
+
+<div class="col-md-6 col-sm-12">
+
+
+	<section class="bg-light p-4 rounded-lg border">
+
+	<p class="lead">Opportunity Details</p>
+	<hr>
+	<div class="form-group  inputBox">
+	<input type="text" class="form-control search bg-white calendar" id="closing_date" required autocomplete="off">
+	<label>Closing Date:</label>
+	<div id="custom-pos"></div>
+	</div>
+
+
+	<div class="form-group inputBox">
+	<input type="text"  id="type" list="type1" class="form-control search bg-white" required>
+	<label>Type</label>
+	<datalist id="type1">
+	<option>Existing Business</option>
+	<option>New Business</option>
+	</datalist>
+	</div>
+	
+	<div class="form-group inputBox">
+	<input type="text"  id="stage" list="stage1" class="form-control search bg-white" required>
+	<label>Stage</label>
+	<datalist id="stage1">
+	<option>Qualification</option>
+	<option>Needs Analysis</option>
+	<option>Negotiation Review</option>
+	<option>Closed Won</option>
+	<option>Closed Lost</option>
+	<option>Closed-Lost to competition</option>
+	</datalist>
+	</div>
+
+	<div class="form-group   inputBox">
+	<input type="text" id="probability"  class="form-control bg-white" required>
+	<label>Probability (%)</label>
+	</div>
+
+	<input type="hidden" id="contactname">
+	<input type="hidden" id="city">
+	<input type="hidden" id="leadnamec">
+	<input type="hidden" id="companyc">
+	<input type="hidden" id="lead_source">
+
+	<input type="hidden" id="opphone">
+	<input type="hidden" id="opemail">
+	
+	</section>
+
+</div>
+
+
+
+<div class="col-md-6 col-sm-12">
+
+	<section class="bg-light p-4 rounded-lg border hidecustbx">
+
+		<p class="lead">Customer Account Details</p>
+		<hr>
+		<div class="form-group  inputBox">
+		<input type="text" class="form-control search bg-white" id="fullname" required="">
+		<label>Fullname:</label>
+		</div>
+		
+	 
+		<div class="form-group   inputBox">
+		<input type="text"  id="cphone" class="form-control search bg-white" required>
+		<label>Phone</label>
+		</div>
+	
+
+		<div class="form-group   inputBox">
+		<input type="text"  id="cemail" class="form-control search bg-white">
+		<label>Email</label>
+		</div>
+
+		<div class="form-group   inputBox">
+		<input type="text"  id="location" class="form-control search bg-white" required>
+		<label>Location</label>
+		</div>
+
+</section>
+</div>
+
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-6">
+<div id="result"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6 col-sm-12">
+<a href="javascript:void(0);" class="btn btn-primary btn-sm " id="convert_lead">Save</a>
+<a href="javascript:void(0);" class="btn btn-danger btn-sm tex-white" onclick="goBack();">Cancel</a>
+</div>
+</div>
+</form>
+
+
+
+
+</div>
+</section>
+
+<script  src="assets/js/convert-lead.js" type="module"></script>

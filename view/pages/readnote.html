@@ -1,0 +1,62 @@
+<br>
+ <div class="container bg-white" style="min-height: 700px;">
+    <div class="row">
+
+
+<div class="col-sm-12 col-md-11 m-auto">
+<div class="jumbotron bg-light p-0">
+
+<div class="row">
+<div class="col-sm-12 col-md-11">
+<div id="subject" class="lead">
+</div>
+</div>
+<div class="col-md-1 col-sm-12">
+    <a href="?page=note"><i class="fa fa-arrow-left fa-sm"></i></a>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-1">
+<div class="img-bx">
+    <img src="assets/images/admin.jpg" alt="">
+</div>
+</div>
+<div class="col-sm-12 col-md-11">
+<div class="mesdetails">
+<span class="sw">From:</span><span id="from" class="ml-2"></span>
+<div class="clearfix"></div>
+<span class="sw">To:</span><span id="to" class="ml-2"></span>
+<div class="clearfix"></div>
+<span class="sw">Date:</span><span id="datex" class="ml-2"></span>
+<div class="clearfix"></div>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+<div class="mesarea"></div>
+</div>
+</div>	
+</div>
+</div>
+<br>
+
+
+<script>
+const page = new URLSearchParams(window.location.search);
+var note_id = page.get('note_id');
+
+const readmess = async ()=>{
+    const resp = await fetch(`router.php?controller=note&task=read_note&note_id=${note_id}`)
+    const data = await resp.json();
+    document.getElementById('subject').innerHTML = data[0].subject;
+    document.getElementById('from').innerHTML = data[0].frm.toUpperCase();
+    document.getElementById('to').innerHTML = data[0].fullname.toUpperCase();
+    document.getElementById('datex').innerHTML = data[0].date;
+    document.querySelector('.mesarea').innerHTML = data[0].message;
+}
+readmess();
+</script>

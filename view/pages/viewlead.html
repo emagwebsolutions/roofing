@@ -1,0 +1,567 @@
+	
+	<!--============================
+	BEGIN CALL TO ACTION BUTTONS
+	=============================-->
+	
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-12">	
+	<div class=" bg-white">
+	<div class="row">
+	<div class="col-sm-12 col-md-1">
+		<a href="javascript:void(0);" onclick="goBack();" class="btn btn-sm btn-default">Back</a>
+	</div>
+	<div class="col-sm-12 col-md-7">
+	</div>
+	<div class="col-sm-12 col-md-4">
+		<div class="hidebtns">
+		<a href="javascript:void(0);" class="btn btn-sm btn-default rounded-lg" data-toggle="modal" data-target="#emailModal">
+			<i class="fa fa-envelope fa-sm"></i> Send Email
+		</a>
+		<a href="javascript:void(0);" class="btn btn-sm btn-default rounded-lg convlead">
+			<i class="fa fa-book fa-sm"></i> Convert to Opportunity</a>
+		<a href="javascript:void(0);" class="btn btn-sm btn-default rounded-lg" data-toggle="modal" data-target="#leadModal">
+		<i class="fa fa-pencil fa-sm"></i> Edit Lead</a>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<!--============================
+	END CALL TO ACTION BUTTONS
+	=============================-->
+		<div class="container">
+			<div class="row">
+				  <div class="col-xs-12 col-sm-9 ">
+					
+					<!--============================
+					BEGIN CONTACT PERSON
+					=============================-->
+					<div class="card">
+	
+					  <div class="card-body">
+						<div class="card-title">
+						<h4 class="lead">Contact Person</h4>
+						</div>
+						<div class="profile__avatar">
+						  <img src="assets/images/avatar.png" alt="">
+						</div>
+						<div class="profile__header">
+						  <h4 id="contactperson"></h4>
+						  <p class="text-muted text-justify" id="leaddescription">
+							Leads description.....
+						  </p>
+			
+						</div>
+					  </div>
+					</div>
+				<!--============================
+				END CONTACT PERSON
+				=============================-->
+			
+				<!--============================
+				BEGIN LEAD INFORMATION
+				=============================-->
+					<div class="card">
+		
+					  <div class="card-body">
+						<div class="card-title">
+						<h4 class="panel-title">Lead Information</h4>
+						</div>
+						<table class="table profile__table">
+						  <tbody>
+
+							<tr>
+								<th><strong>Assigned to:</strong></th>
+								<td id="assigned1"></td>
+							</tr>
+
+							<tr>
+							  <th><strong>Lead Source</strong></th>
+							  <td id="Lead_source"></td>
+							</tr>
+							<tr>
+							  <th><strong>Industry</strong></th>
+							  <td id="Industry"></td>
+							</tr>
+							<tr>
+							  <th><strong>Company</strong></th>
+							  <td id="Company"></td>
+							</tr>
+							<tr>
+								<th><strong>Lead Name</strong></th>
+								<td id="Lead_name"></td>
+							</tr>
+							<tr>
+								<th><strong>Lea Status</strong></th>
+								<td id="leadstatus"></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+					</div>
+				<!--============================
+				END LEAD INFORMATION
+				=============================-->
+				<!--============================
+				BEGIN COMMENT BOX
+				=============================-->
+				<div class="row hidecomment">
+			
+					<!-- Start comment box -->
+					<div class="card col-sm-12">
+					<div class="card-body">
+					<div class="card-title">
+					Comment 
+					</div>
+					<textarea class="form-control comment" placeholder="write a comment..." rows="3"></textarea>
+					<br>
+					<a href="javascript:void(0);" class="btn btn-primary btn-sm rounded pull-right" id="addComment">
+					Save <i class="fa fa-send fa-lg"></i>
+					</a>
+					</div>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+					<!-- End comment box -->		
+				
+				<!-- Begin Post Box-->	
+				<div id="post-box"></div>
+				<!-- End Post Box-->									
+						
+			
+				
+				<!--============================
+				END COMMENT BOX
+				=============================-->
+				</div>
+				<div class="col-xs-12 col-sm-3">
+	
+			
+					<hr class="profile__contact-hr">
+					
+					<!-- Contact info -->
+					<div class="profile__contact-info">
+					  <div class="profile__contact-info-item">
+						<div class="profile__contact-info-icon">
+						  <i class="fa fa-phone"></i>
+						</div>
+						<div class="profile__contact-info-body">
+						  <h5 class="profile__contact-info-heading">Work number</h5>
+						  <span id="work_number"></span>
+						</div>
+					  </div>
+					  <div class="profile__contact-info-item">
+						<div class="profile__contact-info-icon">
+						  <i class="fa fa-phone"></i>
+						</div>
+						<div class="profile__contact-info-body">
+						  <h5 class="profile__contact-info-heading">Mobile number</h5>
+						  <span id="mobile_number"></span>
+						</div>
+					  </div>
+					  <div class="profile__contact-info-item">
+						<div class="profile__contact-info-icon">
+						  <i class="fa fa-envelope-square"></i>
+						</div>
+						<div class="profile__contact-info-body">
+						  <h5 class="profile__contact-info-heading">E-mail address</h5>
+						  <span id="email_addr"></span>
+						</div>
+					  </div>
+					  <div class="profile__contact-info-item">
+						<div class="profile__contact-info-icon">
+						  <i class="fa fa-map-marker"></i>
+						</div>
+						<div class="profile__contact-info-body">
+						  <h5 class="profile__contact-info-heading">City</h5>
+						  <span id="City"></span>
+						</div>
+					  </div>
+					</div>
+			
+				  </div>
+				</div>
+			</div>
+			
+	
+	
+	
+	
+	<input type="hidden" id="leadName">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
+	
+	
+	
+	</div>
+	<!--===================================
+	BEGIN CREATE LEADS
+	===================================--->
+	<div id="leadModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+        <div class="modal-content  p-4">
+		<div class="p-2 shadow">
+		<!------------------------
+		Begin Modal Button
+		------------------------->
+        <div class="modal-header bg-light">
+        <h5 class="h2" id="title">Lead Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>	
+		<!------------------------
+		End Modal Button
+		------------------------->
+	     <div id="result"></div>
+	    <br>
+		<form>	
+        <div class="modal-body">
+	   <div class="row">
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="contactname" class="form-control search" required>
+				   <label>Contact Name</label>	
+				 </div>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="leadname" class="form-control search" required>
+				   <label>Lead Name</label>	
+				 </div>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+		<div class="form-group  inputBox  pt-0">		  
+		   <input type="text" id="companyx" autocomplete="false" class="search form-control items-lists-bx"   required>
+		   <label>Company</label>		  
+	   </div>
+	   <ul id="items-lists"></ul>
+		</div>
+	
+	   <div class="col-md-6 col-sm-12">
+						
+				   <select class="form-control search"  id="industry">
+					<option>Select Industry</option>
+				   <option>Advertising</option>
+				   <option>Airlines</option>
+				   <option>Architectural Services</option>
+				   <option>Auto Dealers</option>
+				   <option>Banks, Savings & Loans</option>
+				   <option>Books, Magazines & Newspaper</option>
+				   <option>Broadcasters, Radio/TV</option>
+				   <option>Builders/General Contractors</option>
+				   <option>Business Services</option>
+				   <option>Car Dealers</option>
+				   <option>Colleges, Universities & Schools</option>
+				   <option>Communications/Electronics</option>
+				   <option>Computer Software</option>
+				   <option>Construction</option>
+				   <option>Dentists</option>
+				   <option>Entertainment </option>
+				   <option>Food & Beverage</option>
+				   <option>Food Processing & Sales</option>
+				   <option>Funeral Services</option>
+				   <option>Hotels, Motels & Tourism</option>
+				   <option>Insurance</option>
+				   <option>Internet</option>
+				   <option>Manufacturing</option>
+				   <option>Meat processing & products</option>
+				   <option>Medical Supplies</option>
+				   <option>Mining</option>
+				   <option>Music Production</option>
+				   <option>Oil & Gas</option>
+				   <option>Phone Companies</option>
+				   <option>Printing & Publishing</option>
+				   <option>Radio/TV Stations</option>
+				   <option>Railroads</option>
+				   <option>Real Estate</option>
+				   <option>Religious Organizations/Clergy</option>
+				   <option>Restaurants & Drinking Establishments</option>
+				   <option>Retail Sales</option>
+				   <option>Savings & Loans</option>
+				   <option>Textiles</option>
+				   <option>Transportation</option>
+				   <option>Waste Management</option>
+				   <option>Other	</option>
+				   </select>
+				 
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="emailx" class="mail form-control search">
+				   <label>Email <i>(Optional)</i></label>	
+				 </div>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="url" class="form-control search">
+				   <label>Website <i>(Optional)</i></label>	
+				 </div>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="phone" class="form-control search">
+				   <label>Phone <i>(Optional)</i></label>	
+				 </div>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="mobile" class="fon form-control search" required>
+				   <label>Mobile</label>	
+				 </div>
+	   </div>
+	
+	   <div class="col-md-6 col-sm-12">	
+				   <select class="form-control search"  id="lead_source">
+								<option>Select Lead Source</option>
+							   <option>Advertisement</option>
+							   <option>Cold Call</option>
+							   <option>Employee Referral</option>
+							   <option>External Referral</option>
+							   <option>Online Store</option>
+							   <option>Partner</option>
+							   <option>Public Relations</option>
+							   <option>Email</option>
+							   <option>Seminar</option>
+							   <option>Trade Show</option>						
+							   <option>Web Research</option>							
+							   <option>Chat</option>							
+				   </select>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+					
+				   <select class="form-control search" id="lead_status">
+							   <option>Select Lead Status</option>
+							   <option>Attempted to contact</option>
+							   <option>Contacted</option>
+							   <option>Lost Lead</option>
+							   <option>Not Contacted</option>
+							   <option>Not Qualified</option>						
+							   <option>None</option>							
+				   </select>
+		
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				   <select class="form-control search" id="sales_stage">
+								<option>Select Sales Stage</option>
+							   <option>Working</option>
+							   <option>Won</option>
+							   <option>Lost </option>						
+				   </select>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="skype" class="form-control search" >
+				   <label>Skype ID <i>(Optional)</i></label>	
+				 </div>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="twitter" class="form-control search">
+				   <label>Twitter <i>(Optional)</i></label>	
+				 </div>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="facebook" class="form-control search">
+				   <label>Facebook <i>(Optional)</i></label>	
+				 </div>
+	   </div>
+	
+	   <div class="col-md-6 col-sm-12">	
+				   <select class="form-control search" id="region">
+								<option>Select Region</option>
+							   <option>Ashanti</option>
+							   <option>Brong Ahafo</option>
+							   <option>Central</option>		
+							   <option>Eastern</option>
+							   <option>Greater Accra</option>
+							   <option>Northern</option>
+							   <option>Upper East</option>
+							   <option>Upper West</option>
+							   <option>Volta</option>
+							   <option>Western</option>						
+				   </select>
+	   </div>
+	   <div class="col-md-6 col-sm-12">
+				 <div class=" inputBox">
+				   <input type="text" id="city" class="form-control search" required>
+				   <label>City/Town</label>	
+				 </div>
+	   </div>
+	   </div>
+	   
+	   
+	   <br>
+	
+	   <div class="row">
+	   <div class="col-sm-12">
+	   <h4>Description </h4>
+		<textarea class="textarea" id="description" placeholder="Description" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="description"></textarea>
+	   </div>
+	   </div>
+	
+	   
+		<div id="results"></div>
+		</div>
+		<div class="modal-footer">
+        <a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+        <a href="javascript:void(0);"  class="btn btn-default btn-sm" id="updateLead">Update Lead</a>
+        </div>
+		</form>
+		</div>
+        </div>
+        </div>
+        </div>		
+        </div>
+	<!--===================================
+	END CREATE LEADS
+	===================================--->
+	<!--===================================
+	BEGIN EMAIL MODAL BOX 
+	===================================--->
+	<div id="emailModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+        <div class="modal-content  p-4">
+		<div class="p-2 shadow">
+		<!------------------------
+		Begin Modal Button
+		------------------------->
+        <div class="modal-header bg-light">
+	<h3 class="box-title  emerror emresult"> <i class="fa fa-envelope"></i> Quick Email</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>	
+		<!------------------------
+		End Modal Button
+		------------------------->
+		<form>	
+        <div class="modal-body">
+			<div class="box box-info">
+				<div class="box-body">
+				<form>	
+					<div class="form-group inputBox">
+					  <input type="text" class="form-control" id="subject" required>
+						  <label>Subject</label>	
+					</div>
+					<div class="form-group inputBox">
+					  <input type="email" class="form-control" id="semail" required>
+						  <label>Email</label>	
+					</div>
+						<div class="form-group">
+					  <input type="file" id="uFile">
+					</div>					
+					<div>
+					  <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="smessage"></textarea>
+					</div>
+		
+			</form>
+				</div>
+			  </div>
+<div id="eresult"></div>
+		</div>
+		<div class="modal-footer">
+        <a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+        <a href="javascript:void(0);"  class="btn btn-default btn-sm 
+         sendEmail">Send Email</a>
+        </div>
+		</form>
+		</div>
+        </div>
+        </div>
+        </div>		
+        </div>
+	<!--===================================
+	END EMAIL MODAL BOX 
+	===================================--->
+<script  src="assets/js/viewlead.js" type="module"></script>
+<script  src="assets/js/email-crm.js" type="module"></script>
+<script  src="assets/js/crm-comment.js" type="module"></script>
+<script>
+	/*============================================
+	BEGIN ITEMS DROP DOWN
+	============================================*/
+	//On input field keyup display items and search through 
+	document.querySelector('.items-lists-bx').addEventListener('keyup', e => {
+		document.getElementById('items-lists').style.display = 'block';
+		const items = document.querySelectorAll('.itms');
+		var inptVal = e.target.value.toLocaleLowerCase();
+	
+		items.forEach(v => {
+	
+			const itemsText = v.textContent.toLocaleLowerCase();
+	
+			if(itemsText.indexOf(inptVal) != -1){
+				v.style.display = 'block';
+			}
+			else{
+				v.style.display = 'none';
+			}
+	
+		});
+		
+	});
+	
+	
+	document.addEventListener('click', e => {
+	
+		if(e.target.classList.contains('itms-link')){
+			//On item click insert item into input field
+			e.target.parentElement.parentElement.previousElementSibling.children[0].value = e.target.textContent.trim();
+	
+			//Get item user id
+			const crm_id = e.target.dataset.crm_id;
+	
+			//Fetch all items by user id
+			fetch(`router.php?controller=crm&task=get_single_contact&crm_id=${crm_id}`)
+			.then(resp => resp.json())
+			.then(data => {
+				document.querySelector('.fon').value = data[0].mobile;
+				document.querySelector('.mail').value = data[0].email;
+			});
+		}
+	
+		//Display dropdown on input field click
+		if(e.target.classList.contains('items-lists-bx')){
+			document.getElementById('items-lists').style.display = 'block';
+		}
+	});
+	
+	
+	//Load dropdown items
+	window.addEventListener('load', e => {
+		fetch('router.php?controller=crm&task=get_contact_details')
+		.then(resp => resp.json())
+		.then(data => {
+			var output = '';
+			data.forEach(v => {
+				output += `<li  class ="itms">
+					<a href="javascript:void(0)" class ="itms-link" data-crm_id = "${v.crm_id}">
+					${v.company}
+					</a></li>`;
+			});
+			document.getElementById('items-lists').innerHTML = output;
+		});
+	});
+	
+	
+	//Onclick hide drop down
+	document.body.onclick = function(){
+		document.getElementById('items-lists').style.display = 'none';
+	}
+	/*============================================
+	END ITEMS DROP DOWN
+	============================================*/
+</script>

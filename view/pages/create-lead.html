@@ -1,0 +1,245 @@
+<br><br><br><br>
+<section class="padding-twenty white-bg">
+<form action="router.php" method="post" id="form-submit" onsubmit="parent.scrollTo(0, 0);   return false">	
+<section class="grey-bg padding-twenty">
+<div  class="container">
+<div class="row">
+<div class="color-grey col-sm-2 col-xs-12">
+<h1 class="color-grey font-size-twenty margin-top-zero text-left">
+Create Lead 
+</h1>
+</div>
+<div class="col-sm-8 col-xs-12">
+</div>
+<div class="col-sm-2 col-xs-12 text-right">
+ <input type="submit" class="btn btn-primary btn-sm" value="Save" name="submit">
+<a  href="javascript:void(0);" onclick="back();"  class="btn btn-danger btn-sm">Cancel</a>
+</div>
+</div>
+</div>
+</section>
+<div class="container">
+	     <div class="result error"></div>
+	    <br>
+		<br>
+		<h4>Lead Information</h4>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="contactname" class="form-control" required>
+			<label>Contact Name</label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="leadname" class="form-control" required>
+			<label>Lead Name</label>	
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="company" class="form-control" required>
+			<label>Company</label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <select class="form-control" name="industry">
+			<option> Industry</option>
+			<option>Advertising</option>
+			<option>Airlines</option>
+			<option>Architectural Services</option>
+			<option>Auto Dealers</option>
+			<option>Banks, Savings & Loans</option>
+			<option>Books, Magazines & Newspaper</option>
+			<option>Broadcasters, Radio/TV</option>
+			<option>Builders/General Contractors</option>
+			<option>Business Services</option>
+			<option>Car Dealers</option>
+			<option>Colleges, Universities & Schools</option>
+			<option>Communications/Electronics</option>
+			<option>Computer Software</option>
+			<option>Construction</option>
+			<option>Dentists</option>
+			<option>Entertainment </option>
+			<option>Food & Beverage</option>
+			<option>Food Processing & Sales</option>
+			<option>Funeral Services</option>
+			<option>Hotels, Motels & Tourism</option>
+			<option>Insurance</option>
+			<option>Internet</option>
+			<option>Manufacturing</option>
+			<option>Meat processing & products</option>
+			<option>Medical Supplies</option>
+			<option>Mining</option>
+			<option>Music Production</option>
+			<option>Oil & Gas</option>
+			<option>Phone Companies</option>
+			<option>Printing & Publishing</option>
+			<option>Radio/TV Stations</option>
+			<option>Railroads</option>
+			<option>Real Estate</option>
+			<option>Religious Organizations/Clergy</option>
+			<option>Restaurants & Drinking Establishments</option>
+			<option>Retail Sales</option>
+			<option>Savings & Loans</option>
+			<option>Textiles</option>
+			<option>Transportation</option>
+			<option>Waste Management</option>
+			<option>Other	</option>
+			</select>
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="email" class="form-control">
+			<label>Email <i>(Optional)</i></label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="url" class="form-control">
+			<label>Website <i>(Optional)</i></label>	
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="phone" class="form-control">
+			<label>Phone <i>(Optional)</i></label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="mobile" class="form-control" required>
+			<label>Mobile</label>	
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+			<select class="form-control" name="lead_source">
+						<option>Lead Source</option>
+						<option>Advertisement</option>
+						<option>Cold Call</option>
+						<option>Employee Referral</option>
+						<option>External Referral</option>
+						<option>Online Store</option>
+						<option>Partner</option>
+						<option>Public Relations</option>
+						<option>Email</option>
+						<option>Seminar</option>
+						<option>Trade Show</option>						
+						<option>Web Research</option>							
+						<option>Chat</option>							
+			</select>
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+			<select class="form-control" name="lead_status">
+						<option>Lead Status</option>
+						<option>Attempted to contact</option>
+						<option>Contacted</option>
+						<option>Lost Lead</option>
+						<option>Not Contacted</option>
+						<option>Not Qualified</option>						
+						<option>None</option>							
+			</select>
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+			<select class="form-control" name="sales_stage">
+						<option>Sales Stage</option>
+						<option>Working</option>
+						<option>Won</option>
+						<option>Lost </option>						
+			</select>
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="skype" class="form-control" >
+			<label>Skype ID <i>(Optional)</i></label>	
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="twitter" class="form-control">
+			<label>Twitter <i>(Optional)</i></label>	
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="facebook" class="form-control">
+			<label>Facebook <i>(Optional)</i></label>	
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+			<select class="form-control" name="region">
+						<option>Region</option>
+						<option>Ashanti</option>
+						<option>Brong Ahafo</option>
+						<option>Central</option>		
+						<option>Eastern</option>
+						<option>Greater Accra</option>
+						<option>Northern</option>
+						<option>Upper East</option>
+						<option>Upper West</option>
+						<option>Volta</option>
+						<option>Western</option>						
+			</select>
+          </div>
+</div>
+<div class="col-sm-6 col-xs-12">
+          <div class="form-group has-feedback inputBox">
+            <input type="text" name="city" class="form-control" required>
+			<label>City/Town</label>	
+          </div>
+</div>
+</div>
+</div>
+<br><br>
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+<h4>Description </h4>
+	<textarea class="textarea" name="description" placeholder="Description" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="message"></textarea>
+</div>
+</div>
+</div>
+<br><br>
+	<input type="hidden" name="unqidfr" value="<?php echo $unqidfr; ?>">
+	<input type="hidden" name="task" value="add_lead">
+	<input type="hidden" name="controller" value="crm">
+
+<section class="grey-bg padding-twenty">
+<div  class="container">
+<div class="row">
+<div class="color-grey col-sm-2 col-xs-12">
+</div>
+<div class="col-sm-8 col-xs-12">
+</div>
+<div class="col-sm-2 col-xs-12 text-right">
+ <input type="submit" class="btn btn-primary btn-sm" value="Save" name="submit">
+<a href="?page=leads" class="btn btn-danger btn-sm">Cancel</a>
+</div>
+</div>
+</div>
+</section>
+</form>
+  </section>

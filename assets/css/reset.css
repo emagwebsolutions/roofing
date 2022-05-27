@@ -1,0 +1,60 @@
+:root{
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+  --white: 0,0%,100%;
+  --black: 0,0%,5%;
+  --muted: #666;
+  --danger: 10,75%,50%;
+  --warning: 35,100%,75%;
+  --primary: 220,100%,50%;
+  --success: 120,50%,40%;
+}
+body{
+  min-height: 100vh;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.content{
+  margin-top: 10rem;
+}
+*,
+::before,
+::after{
+  box-sizing: border-box;
+}
+
+ul{
+  list-style: none;
+}
+
+body,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5{
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    outline: none;
+    border: solid .1rem #ccc;
+}
+
+a{
+  text-decoration: none;
+}
+
+

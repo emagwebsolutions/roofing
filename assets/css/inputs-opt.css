@@ -1,0 +1,95 @@
+
+/*
+Animate input field
+*/
+.input-animate{
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .input-animate input{
+    border-radius: 4rem;
+    font-size: .8rem;
+    padding: .7em;
+    margin-bottom: 1.6rem;
+    width: 100%;
+  }
+  
+
+  
+  .input-animate input:not(:placeholder-shown) + label{
+    top: -1.7em;
+    left: .8rem;
+    font-weight: bold;
+    font-size: .7rem!important;
+    color: #777;
+  }
+
+  .input-animate select:not(:placeholder-shown) + label{
+    top: -1.7em;
+    left: .8rem;
+    font-weight: bold;
+    font-size: .7rem!important;
+    color: #777;
+  }
+
+
+
+  
+  .input-animate label{
+    position: absolute;
+    top: .3em;
+    left: 1.3rem;
+    transition: .3s;
+    pointer-events: none;
+    font-size: .9rem!important;
+  }
+  
+  .input-animate input:focus + label{
+    top: -1.7em;
+    left: .8rem;
+    font-size: .7rem!important;
+    font-weight: bold;
+    color: #777;
+  }
+
+  .input-animate select:focus + label{
+    top: -1.7em;
+    left: .8rem;
+    font-size: .7rem!important;
+    font-weight: bold;
+    color: #777;
+  }
+
+
+  
+  .button-rounded{
+    border-radius: 2rem;
+    font-size: 1rem!important;
+    width: 100%!important;
+    background-color: #222;
+    padding: 1rem;
+    display: none;
+  }
+  
+  .button-rounded:hover{
+    background-color: #fff!important;
+    color: #222!important;
+  }
+
+  .fa-spin{
+    font-size: 3rem;
+    margin-inline: auto;
+    margin: .3rem;
+    color: #000;
+  }
+  .results{
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  [type="date"]{
+    color: #777!important;
+  }
+
+
+  

@@ -1,0 +1,89 @@
+.login-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    perspective: 2000px;
+}
+.login-wrapper::before{
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: hsl(0,0%,0%, .6);
+    z-index: -1;
+}
+
+.login-inner{
+    padding: 2em;
+    border-radius: 3rem;
+    background-color: #444;
+    z-index: 2;
+    transform: rotatex(90deg);
+    transform-origin: bottom;
+    animation: nm .5s forwards ease-in;
+}
+
+@keyframes nm{
+    to{
+        transform: rotatex(0deg);
+    }
+}
+
+.login-inner input{
+    background-color: transparent!important;
+    color: #ccc!important;
+    
+}
+
+.login-inner label{
+    color: #ccc!important;
+}
+
+.login-inner a{
+    color: #fff!important;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.comp_name{
+    padding: 2rem;
+}
+
+.comp_name h4{
+    font-size: 2rem;
+    color: #ccc;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    animation: hd forwards linear;
+    animation-delay: 1s;
+
+}
+@keyframes hd{
+    to{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.comp_name p{
+    color: white;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    animation: par forwards linear;
+    animation-delay: 1.5s;
+}
+@keyframes par{
+    to{
+        opacity: 1;
+        visibility: visible;
+    }
+}

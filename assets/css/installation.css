@@ -1,0 +1,23 @@
+.install{
+  width: 100vw;
+  margin-inline: auto;
+  padding: 3rem;
+  background-color: #dedede;
+  display: flex;
+  justify-content: center;
+}
+
+.input-animate{
+  margin-bottom: 0!important;
+}
+
+.install-btn{
+  display: block;
+  border-radius: 2rem;
+  background-color: hsl(var(--success));
+  text-align: center;
+  color: white; 
+  font-size: 1.4rem;
+  padding: .7em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,445 @@
+<br>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-10  bg-white  pl-0 pr-0 m-auto">	
+<div class="row">
+<div class="col-md-3  pr-0">
+<div class="bg-white p-2">
+
+
+<!-- Start search box -->
+<div class="form-group">
+<input type="text" class="form-control search search_customer_list" id ="searchbox" placeholder="Search customer by firstname">
+</div>
+<!-- End search box -->
+
+<!-- Begin Customer Filter  -->
+<button class="cprofile btn btn-default rounded-lg btn-block btn-sm dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i> Filter by customer owner</button>
+<div class="dropdown-menu" id="itemslists"></div>
+<!-- End Customer Filter -->
+
+<!-- Start customer lists -->
+<table class="search_customer  search_user_customer list-group cdisplay searchcust">
+<tbody id="customerscroll">
+
+</tbody>
+</table>
+<!-- End customer lists -->
+
+</div>
+</div>
+<div class="col-md-9  ">
+
+<div class="bg-white p-2">
+<div>
+
+
+<div class="row">
+
+<div class="col-sm-12 col-md-5">
+<!-- Start Fullname -->
+<span class="font-weight-bold lead fullname"></span> &nbsp;&nbsp;
+<!-- End Fullname -->
+</div>
+
+
+
+<div class="col-sm-12 col-md-7">
+
+<!-- Start add note button -->
+<button class="btn btn-default btn-sm display-block cust-note"   title="" 
+data-toggle="modal" data-target="#noteModal">
+<i class="fa fa-book"></i> 
+&nbsp;&nbsp; Add Note
+</button>
+<!-- End add note button -->
+
+<!-- Start add credit button -->
+<button class="btn btn-default btn-sm display-block cust-note"   title="" 
+data-toggle="modal" data-target="#creditModal">
+<i class="fa fa-book"></i> 
+&nbsp;&nbsp; Top-up Funds
+</button>
+<!-- End add credit button -->
+
+
+<!-- Start edit customer button -->
+<button class="btn btn-default btn-sm display-block"  title="" 
+data-toggle="modal" data-target="#customerModal"><i class="fa fa-user "></i> &nbsp;&nbsp; Add New Customer</button>&nbsp;
+<!-- End edit customer button -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+<div class="border-bottom"></div>
+<div class="clearfix"></div>
+<div class="rdisplay">
+
+
+
+
+				  <table class="font-size-fourteen color-black">
+		
+					<tr>
+					<td class="pt-2">
+					Location:
+					</td>
+					<td class="pt-2 locationx">
+					</td>
+					</tr>
+					<tr>
+					<td class="pt-2">
+					Phone:
+					</td>
+					<td class="pt-2 phone">
+					</td>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
+					<td class="pt-2">
+					Date:
+					</td>
+					<td class="pt-2 date">
+					</td>
+					</tr>
+					<tr>
+					<td class="pt-2">
+					Email:
+					</td>
+					<td class="pt-2 email">
+					</td>
+					</tr>
+
+					<tr>
+					<td class="pt-2">
+					<strong>Funds Balance:</strong>
+					</td>
+					<td class="pt-2">
+						<strong class="fundsb"></strong>
+					</td>
+					</tr>
+						
+					<tr>
+					<td class="pt-2">
+					<span class="font-italic">Assigned to: </span>
+					</td>
+					<td class="pt-2 assignedto">
+					</td>
+					</tr>
+
+					<tr>
+					<td>
+					<span>Send Whatsapp:</span>
+					</td>
+					<td class="whatsapp"></td>
+					</tr>
+
+					<tr>
+					<td>
+					<a href="javascript:void(0)" class="btn btn-danger btn-sm statement">View Statement of account</a>
+					</td>
+					<td class="whatsapp"></td>
+					</tr>
+
+
+
+					</table>
+	
+
+ </div>
+ <br>
+</div>
+</div>
+
+<div class="p-2">
+
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="#proforma1" class="nav-link  active" style="color: black!important;" data-toggle="tab">Proforma</a>
+        </li>
+        <li class="nav-item">
+            <a href="#invoice1" class="nav-link" style="color: black!important;" data-toggle="tab">Invoice</a>
+        </li>
+        <li class="nav-item">
+            <a href="#receipt1" class="nav-link" style="color: black!important;" data-toggle="tab">Receipt</a>
+        </li>
+	</ul>
+	
+
+<!-- Display proforma, invoice, receipt -->
+<div class="tab-content"></div>
+
+<!-- HIDDEN INPUTS  -->
+<input type="hidden" id="role">
+
+
+
+
+
+<!--=======================================
+BEGIN ADD NOTE MODAL BOX
+========================================-->
+
+<div id="noteModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-l">
+		<div class="modal-content  p-4">
+		<div class="p-2 shadow">
+			<div class="modal-header bg-light">
+				<h5 class="h2" id="custfullname2"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>	
+
+		<div id="nres"></div>
+		<form>  
+		<div class="col-12">
+		<textarea  id="mess" class="note-bx"></textarea>
+		</div>
+		<div class="modal-footer">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+		<a href="javascript:void(0);" id="addnote" class="btn btn-default btn-sm 
+		AddNote">Save Note</a>
+		</div>
+		</form>
+		</div>
+		</div>
+		</div>
+		</div>		
+		</div>
+	
+<!--=======================================
+END ADD NOTE MODAL BOX
+========================================-->
+
+
+
+
+
+
+	<!--=======================================
+	BEGIN CREDIT MODAL BOX
+	========================================-->
+
+	<div id="creditModal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-l">
+			<div class="modal-content  p-4">
+			<div class="p-2 shadow">
+				<div class="modal-header bg-light">
+					<h5 class="h2" id="custfullname"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>	
+
+				<div class="row">
+					<div class="col-sm-12 col-md-6 m-auto">
+						<div id="funres"></div>
+						<form>  
+						<div class="col-12">
+						<div class="form-group">
+							<label class="control-label">Top-up Funds</label>
+							<input type="number" class="form-control" id="funds">
+						</div>
+						</div>
+						<div class="modal-footer">
+						<a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+						<a href="javascript:void(0);" id="AddFunds" class="btn btn-default btn-sm 
+						AddFunds">Save</a>
+						</div>
+						</form>
+				</ddiv>
+			</div>
+
+
+
+			</div>
+			</div>
+			</div>
+			</div>		
+			</div>
+		
+	<!--=======================================
+	END CREDIT MODAL BOX
+	========================================-->
+
+
+
+
+
+	<!--===================================
+	BEGIN ADD CUSTOMER MODAL BOX 
+	===================================--->
+
+	<div id="customerModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+        <div class="modal-content  p-4">
+		<div class="p-2 shadow">
+
+		<!------------------------
+		Begin Modal Button
+		------------------------->
+        <div class="modal-header bg-light">
+        <h5 class="h2" id="title">New Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>	
+		<!------------------------
+		End Modal Button
+		------------------------->
+
+	     <div id="cresult"></div>
+	    <br>
+		<form>	
+        <div class="modal-body">
+		<div class="row">
+
+		<div class="col-md-6">
+
+		<div class="form-group  inputBox  pt-0">		  
+		<input type="text" class="form-control search customer-list-input" id="fullname" name="fullname"   required autocomplete="off">
+		<div class="customers-list-bx">
+		<span></span>
+		<ul class="customers-list-output"></ul>
+		</div>
+
+		<label for="fullname">Fullname</label>
+		</div>
+		
+		<div class="form-group  inputBox pt-0">			 
+		<input type="text" id="phone" class="form-control search" name="phone"   required>
+		<label for="phone">Phone</label>				   
+		</div>	
+
+
+		</div>
+
+
+		<div class="col-md-6">
+
+		<div class="form-group  inputBox pt-0">		
+		<input type="email" id="emailxs" class="form-control search" placeholder="Optional" name="email">	
+		<label for="email">Email</label>				   
+		</div>
+
+
+		<div class="form-group  inputBox pt-0">	
+		<input type="text" id="location" class="form-control search" name="location"  required>
+		<label  for="location">Location</label>	
+		</div>	
+
+		</div>
+
+		</div>
+		</div>
+
+		<div class="modal-footer">
+        <a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+        <a href="javascript:void(0);" id="button" class="btn btn-default btn-sm 
+         AddCustomer">Add Customer</a>
+        </div>
+		</form>
+		</div>
+        </div>
+        </div>
+        </div>		
+        </div>
+	<!--===================================
+	END ADD CUSTOMER MODAL BOX 
+	===================================--->
+
+
+<!--================================
+BEGIN EDIT CUSTOMER MODAL BOX
+=================================-->
+	    <div id="editCustomer" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-l">
+            <div class="modal-content  p-4">
+			<div class="p-2 shadow">
+                <div class="modal-header bg-light">
+                    <h5 class="h2" id="title">Edit Customer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				
+
+		<form>				
+        <div class="modal-body">
+	    <div id="edresult"></div>
+		<br>
+		<div class="row">
+		<div class="col-md-6">
+
+
+		<div class="form-group  inputBox  pt-0">	
+		<input type="text"  id="fullnamed" class="list-inpt search form-control" required>
+		<label>Fullname</label>
+		</div>
+
+		<div class="form-group  inputBox  pt-0">			  
+		<input type="text" id="phoned"  class="search form-control"   required>
+		<label>Phone</label>		  
+		</div>
+
+		<div class="form-group  inputBox  pt-0">
+		<input type="text"  id="userxx" class="users-list-input search form-control" required>
+		<div class="users-list-bx">
+			<span></span>
+			<ul class="users-list-output"></ul>
+		</div>
+		<label>Assigned to:</label>
+		</div>
+
+		</div>
+
+
+		<div class="col-md-6">			
+		<div class="form-group  inputBox  pt-0">	
+		<input type="email" class="form-control search" id="emaild">	
+		<label>Email</label>		  
+		</div>
+
+		<div class="form-group  inputBox  pt-0">	
+		<input type="text" id="locationd"  class="form-control search"  required>
+		<label>Location</label>			  
+		</div>	
+		<input type="hidden" id="cust_idd">
+		<input type="hidden" id="user_idd">
+		</div>		
+		</div>			
+
+		<div class="modal-footer">
+		<a href="javascript:void(0);" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</a>
+		<a href="javascript:void(0);" id="update_customer" class="btn btn-default btn-sm 
+		EditCustomer">Save Customer</a>
+		</div>
+		</form>
+		</div>
+		</div>
+	</div>
+	</div>		
+	</div>
+
+	<!--================================
+	END EDIT CUSTOMER MODAL BOX
+	=================================-->
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="clearfix"></div>
+<br>
+
+<script  src="assets/js/customercenter.js" type="module"></script>
+<script  src="assets/js/convert-proforma.js" type="module"></script>
+<script src="assets/js/cust_list.js" type="module"></script>
+<script src="assets/js/response.js"></script>
+<script src="assets/js/users_list.js"></script>
+

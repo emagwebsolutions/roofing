@@ -21,11 +21,20 @@
 }
 .modal-top h1{
   font-size: 2.2rem;
-  color: var(--muted);
+  color: hsl(var(--muted));
   text-transform: uppercase;
 }
 .modal-top .close-modal{
-  font-size: 2rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .3em;
+  color: white;
+  height: 2rem;
+  width: 2rem;
+  background-color: hsl(var(--muted));
 }
 .modal-top{
   display: flex;
@@ -35,15 +44,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-block: 1.7em;
+  margin-block: 1em;
   gap: 1.2rem;
 }
 .modal-footer button{
   cursor: pointer;
-  border: solid 1px #666;
+  border: solid .1rem #666;
+  background: none;
   color: #666;
   padding: .2em;
   border-radius: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 button:hover{
@@ -70,9 +82,5 @@ button:hover{
   to{
     opacity: 1;
   }
-}
-
-.error-color{
-  color: hsl(var(--danger))!important;
 }
 

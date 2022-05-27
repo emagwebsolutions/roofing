@@ -9,6 +9,7 @@ import Buttons from '../utils/Buttons.js'
 import Modalbox from '../widgets/Modalbox.js'
 import Spinner from '../utils/Spinner.js'
 import Error from '../utils/Error.js'
+import Success from '../utils/Success.js'
 
 getUsers()
 const obj = JSON.parse(localStorage.getItem('usersDetails'))[0].users_details
@@ -53,6 +54,8 @@ document.addEventListener('click', e => {
         Spinner('addUserModalClass')
 
         Error('addUserModalClass','This is an error message')
+
+        Success('addUserModalClass','This is a success message')
     }
 
     if(e.target.matches('.ufname')){

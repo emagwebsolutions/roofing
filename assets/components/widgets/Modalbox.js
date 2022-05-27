@@ -13,7 +13,7 @@ window.addEventListener('click', e => {
     }
 })
 
-const Modalbox = ( title = '', btnclass = '' ) => (
+const Modalbox = ( title = '', btnclass = '', body='BODY AREA' ) => (
     `
     <div class="modal-wrapper">
         <div class="modal-inner">
@@ -22,7 +22,7 @@ const Modalbox = ( title = '', btnclass = '' ) => (
                 <a href="javascript:void(0);" class="close-modal">&times;</a>
             </div>
             <div class="modal-body">
-
+                ${body}
             </div>
             <div class="modal-footer">
                 <button class="modal-btn ${btnclass}">SAVE</button>

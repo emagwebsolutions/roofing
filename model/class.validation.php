@@ -1,5 +1,5 @@
 <?php
-class validation{
+class Validation{
 	/*-------------------------------------------------------------------------
 	validation::empty_validation(
 	array(

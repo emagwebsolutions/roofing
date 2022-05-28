@@ -72,10 +72,10 @@
 		`
 	}
 
-	const checkBox = ( classname,labelname ) => {
+	const checkBox = ( classname,labelname,value ) => {
 		return `
 		<div class="checkbox-group">
-			<input type="checkbox"  class="${classname}" />
+			<input type="checkbox" value="${value}"  class="${classname}" />
 			<label>${labelname}</label>
 		</div>
 		`

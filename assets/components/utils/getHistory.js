@@ -1,6 +1,6 @@
 const getHistory = async ( callback )=>{
 
-    const fch = await fetch('router.php?controller=widget&task=gethistory')
+    const fch = await fetch('router.php?controller=Widget&task=gethistory')
 
     const data = await fch.json()
 
@@ -10,9 +10,7 @@ const getHistory = async ( callback )=>{
                 fullname: v.firstname+' '+v.lastname,
                 date: v.date,
                 link: v.link,
-                type: v.type,
-                user_id: v.user_id,
-                user_mang: v.user_mang
+                user_id: v.user_id
             }
     }).filter(Boolean)
 

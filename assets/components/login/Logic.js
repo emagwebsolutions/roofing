@@ -1,4 +1,4 @@
-    import {idSelector,classSelector,classValueSelector,classModifyValue} from '../utils/Selectors.js'
+    import {classValueSelector} from '../utils/Selectors.js'
     import FormSubmitUtils from '../utils/FormSubmitUtils.js'
 
     const InputFields = ()=>{
@@ -18,21 +18,18 @@
             const fd = new FormData()
             fd.append('data', JSON.stringify({username,password}))
 
-            fetch('router.php?controller=login&task=signin',{
+            fetch('router.php?controller=Login&task=signin',{
                 method: 'Post',
                 body: new URLSearchParams(fd)
             })
             .then(resp => resp.text())
             .then(data => {
-                console.log(data)
                 const indx = data.indexOf('error')
                 if(indx != -1){
                     ErrorResult('output1',data)
                 }
                 else{
                     sessionStorage.setItem('zsdf', data)
-
-
                     const sess = sessionStorage.getItem('zsdf')
                     if(sess !== data) return ErrorResult('output1','Access denied!')
                     window.location = 'index.php'

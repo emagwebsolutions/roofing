@@ -1,5 +1,5 @@
 <?php
-class user{
+class User{
 
 	public function get_users(){
 		$qry = DB::query("SELECT * FROM users");
@@ -11,10 +11,6 @@ class user{
 		echo json_encode($qry);
 	}
 
-	public function get_users_details(){
-		$qry = DB::query("SELECT * FROM users_details");
-		echo json_encode($qry);
-	}
 
 	public function get_note(){
 		$qry = DB::query("SELECT * FROM note");

@@ -1,0 +1,14 @@
+
+Date: 28 May 2022
+Time: 16:48:29
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'roofing.users' doesn't exist
+ SQL ERROR:
+SELECT * FROM users
+
+
+Date: 28 May 2022
+Time: 16:48:29
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'roofing.users' doesn't exist
+ SQL ERROR:
+UPDATE users SET date = now() WHERE user_id = ?
+

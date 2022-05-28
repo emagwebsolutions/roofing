@@ -1,1 +1,0 @@
-{"user_id":"1","fullname":"Emmanuel Agyemang","department":"","time":1653537640739,"date":"2022-05-26 04:00:40","user_mang":"1","photo":""}

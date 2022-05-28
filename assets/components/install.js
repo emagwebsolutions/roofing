@@ -15,6 +15,7 @@ document.querySelector('.install-btn').addEventListener('click', e => {
         password: getClass('password')
     }
 
+
     const keys = Object.values(data).map( v => v).filter(Boolean).length
 
     e.target.innerHtml = '<i class="fa fa-spinner fa-lg"></i>'
@@ -27,7 +28,7 @@ document.querySelector('.install-btn').addEventListener('click', e => {
     const fd = new FormData()
     fd.append('data',JSON.stringify(data))
 
-    fetch('router.php?controller=installer&task=install',{
+    fetch('router.php?controller=Installer&task=install',{
         method: 'Post',
         body: new URLSearchParams(fd)
     })

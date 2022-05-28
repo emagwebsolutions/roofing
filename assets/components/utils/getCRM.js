@@ -1,18 +1,17 @@
 const getCRM = async ( callback )=>{
 
 	//Get data from customer table 
-	const crmData = await fetch('router.php?controller=crm&task=get_crm')
+	const crmData = await fetch('router.php?controller=Crm&task=get_crm')
 	const crm = await crmData.json()
 
 	//Get data from customer table 
-	const noteData = await fetch('router.php?controller=crm&task=get_crm_note')
+	const noteData = await fetch('router.php?controller=Crm&task=get_crm_note')
 	const note = await noteData.json()
 
 	const c = crm.map( v => {
 
 		return {
 			crm_id: 		v.crm_id,
-			leadname: 		v.leadname,
 			contactname: 	v.contactname,
 			company: 		v.company,
 			industry: 		v.industry,

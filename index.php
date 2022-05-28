@@ -33,33 +33,14 @@ if(isset($_GET['logout'])){
 }
  
 if(isset($_SESSION['edfghl'])){
-
-	if(checkFileExists($curr_page)){
-		$page = 'pages/'.$curr_page;
-	}
-	else{
-		$page = 'pages/dashboard';
-	}
-		
-
 	?>
 	<body style="background-color: #e9ecef;">
-
 	<div class="nav-menu"></div>
-
 	<div class="content"></div>
 	
-	<?php 
-	echo '<style>.'.$curr_page.'{background-color: #fd9c21; border-radius: 17px;}
-	</style>'; 
-	?>
-	
-
 	<?php
-	include 'view/'.strtolower($page).'.html';
+	include 'view/'.strtolower($curr_page).'.html';
 	?>
-	
-	<div class="modalbox"></div>
 
 	<footer>
 		<small>&copy; copyright 2015 - <?php echo date("Y"); ?>  <span id="appname"></span> by <a href="http://www.emagwebsolutions.com">Emagweb Solutions</a></small>

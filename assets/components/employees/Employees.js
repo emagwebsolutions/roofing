@@ -3,7 +3,7 @@ import searchBox from "../utils/searchBox.js"
 import Sidebar from "../utils/Sidebar.js"
 import getUsers from "../utils/getUsers.js"
 import DetailsBox from "../utils/DetailsBox.js"
-import { classSelector } from "../utils/Selectors.js"
+import { classSelector,classValueSelector } from "../utils/Selectors.js"
 import { formatDate } from "../utils/DateFormats.js"
 import Buttons from '../utils/Buttons.js'
 import Modalbox from '../widgets/Modalbox.js'
@@ -54,11 +54,27 @@ const userdetails = ( v ) => {
 document.addEventListener('click', e => {
 
     if(e.target.matches('.addUserModalClass')){
-        Spinner('addUserModalClass')
 
-        Error('addUserModalClass','This is an error message')
+        const user_id = sessionStorage.getItem('zsdf')
 
-        Success('addUserModalClass','This is a success message')
+        console.log(user_id)
+
+
+        // const previlleges = document.querySelectorAll('.previllege')
+
+        // Array.from()
+
+        // menu_name	
+        // menu_parent	
+        // menu_position	
+        // user_id	
+
+
+        // Spinner('addUserModalClass')
+
+        // Error('addUserModalClass','This is an error message')
+
+        // Success('addUserModalClass','This is a success message')
     }
 
     if(e.target.matches('.ufname')){
@@ -181,14 +197,12 @@ const addUserForm = () => (
     <div class="addUserPrevileges">
 
     <div> 
-        ${checkBox('salesinvoice','Sales Invoice')}
-        ${checkBox('salesinvoice','Proforma Invoice')}
-        ${checkBox('salesinvoice','Products')}
+        ${checkBox('previllege','Sales Invoice','Salesinvoice')}
+        ${checkBox('previllege','Products','Products')}
     </div>
     <div> 
-        ${checkBox('salesinvoice','SMS')}
-        ${checkBox('salesinvoice','Leads')}
-        ${checkBox('salesinvoice','Opportunity')}
+        ${checkBox('previllege','SMS','SMS')}
+        ${checkBox('previllege','Leads','Leads')}
     </div>
 
     </div>

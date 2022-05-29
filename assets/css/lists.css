@@ -34,3 +34,8 @@
   overflow-y: scroll;
   overflow-x: none;
 }
+
+.edit-record,
+.delete-record{
+  cursor: pointer;
+}

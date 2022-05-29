@@ -26,7 +26,10 @@ class Validation{
 	)
 	);
 	validation::email_validation($email); 
+	validation::phone_validation(array('Phone'=>$phone));
 	validation::password_validation($password); 
+	validation::date_validation($date, $err_message);
+	validation::password_compare($password,$repassword)
 	validation::website_validation($url); 
 	validation::password_lenght($password);
 	$message = textboxcleaner($_POST['message']);
@@ -72,21 +75,6 @@ class Validation{
 					<span style='font-size:0;'>errors</span>
 					<?php 
 					echo $k, ' Field Required!'; 
-					exit;
-				}
-			}
-		}	
-	}
-
-
-	public static function receipt_email_empty_validation($var = array()){
-		if(is_array($var)){
-			foreach($var as $k=>$v){
-				if(empty($v)){
-					?>
-					<span style='font-size:0;'>errors</span>
-					<?php 
-					echo $k, ' Required!'; 
 					exit;
 				}
 			}
@@ -158,6 +146,16 @@ class Validation{
 			?>
 			<span style='font-size:0;'>errors</span>
 			Password should be atleast 6 digits
+			<?php		
+			exit;
+		}
+	}
+
+	public static function password_compare($password,$repassword){
+		if($password != $repassword ){
+			?>
+			<span style='font-size:0;'>errors</span>
+			Password do not match!
 			<?php		
 			exit;
 		}

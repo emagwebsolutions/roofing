@@ -6,7 +6,7 @@ export const getUsersOnline = async ()=>{
 
     const user_id = sessionStorage.getItem('zsdf')
 
-    const ftch = await fetch('router.php?controller=widget&task=getusersonline')
+    const ftch = await fetch('router.php?controller=Widget&task=getusersonline')
     const users = await ftch.json()
 
     const d = new Date().getTime()
@@ -57,7 +57,6 @@ export const getUsersOnline = async ()=>{
                 <div class="online-indicator ${v.status.toLowerCase()}"></div>
                 <div class="online-details">
                     <h3>${v.fullname}</h3>
-                    <small>(${v.department})</small>
                     <br>
                     <strong class="lastseen ${v.status.toLowerCase()}">Last seen: ${timeAgo(v.date)}</strong>
                 </div>

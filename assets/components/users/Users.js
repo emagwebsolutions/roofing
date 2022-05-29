@@ -13,10 +13,7 @@ import Success from '../utils/Success.js'
 import { textInput,checkBox } from '../utils/inputFields.js'
 import Title from '../utils/Title.js'
 
-
-getUsers()
-const obj = JSON.parse(localStorage.getItem('usersDetails'))[0].users_details
-
+// This function displays list of users
 const userdetails = ( v ) => {
     const date = v?.hire_date? formatDate(v?.hire_date)  : ''
     return  `<ul>
@@ -37,7 +34,7 @@ const userdetails = ( v ) => {
     <li> 
         <ul>
             <li><i class="fa fa-home text-muted"></i> Residence:</li> 
-            <li>${v?.location || ''}</li>
+            <li>${v?.residence || ''}</li>
         </ul>
     </li>
 
@@ -51,11 +48,59 @@ const userdetails = ( v ) => {
 </ul>`
 }
 
+
+
+//Start click events 
 document.addEventListener('click', e => {
+
+    if(e.target.matches('.edit-record')) {
+
+        document.body.style.overflow = 'hidden'
+        classSelector('modal-wrapper').classList.add('show')
+
+        getUsers((data) => {
+            const { id } = e.target.dataset
+
+            console.log(data)
+
+            const obj = Object.values(data).map( v => v.users.map(v => ({
+                user_id: v.user_id,
+                firstname: v.firstname,
+                lastname: v.lastname,
+                phone: v.phone,
+                residence: v.residence,
+                birthdate: v.birthdate,
+                username: v.username,
+                hire_date: v.hire_date,
+                email: v.email
+            }))).flat(Infinity)
+
+            const v = obj.filter( v => v.user_id === id )[0]
+    
+            classSelector('userid').value =  v.user_id
+            classSelector('firstname').value = v.firstname
+            classSelector('lastname').value =  v.lastname
+            classSelector('phone').value =  v.phone
+            classSelector('email').value =  v.email
+            classSelector('residence').value = v.residence
+            classSelector('hire_date').valueAsDate =  new Date(v.hire_date)
+            classSelector('birthdate').valueAsDate =  new Date(v.birthdate)
+            classSelector('username').value = v.username
+
+        })
+
+
+
+
+    }
 
     if(e.target.matches('.addUserModalClass')){
 
-        const user_id = Number(sessionStorage.getItem('lastid')) + 1
+        const addNewUser = async () => {
+
+        const maxid = await fetch('router.php?controller=Widget&task=get_max_user_id')
+        const userid = await maxid.text()
+        const user_id = Number(userid) + 1
 
         /* Begin all selected previlleges */
         const previlleges = Array.from(document.querySelectorAll('.previllege'))
@@ -64,15 +109,15 @@ document.addEventListener('click', e => {
         previlleges.forEach( v => {
             if(v.checked){
 
-                const menu_position = v.value === 'Products'? 7 : v.value === 'Leads'? 11 : v.value === 'SMS'? 10 : 0
+                const meun_id = v.value === 'Products'? 4 : v.value === 'Leads' ? 8 : v.value === 'SMS' ? 7 : 0
 
-                const menu_parent = v.value === 'Salesinvoice'? 'previllege' : null
+                const menu_parent = v.value === 'Salesinvoice'? 'previllege' : 'null'
 
                 obj.push(
                     {
                         menu_name: v.value,	
                         menu_parent,
-                        menu_position,	
+                        meun_id,	
                         user_id,
                     }
                 )
@@ -83,25 +128,25 @@ document.addEventListener('click', e => {
             {
                 menu_name: 'Dashboard',	
                 menu_parent: 'null',	
-                menu_position: '1',		
+                meun_id: '1',		
                 user_id
             },
             {
                 menu_name: 'Sales',	
                 menu_parent: 'null',	
-                menu_position: '2',		
+                meun_id: '2',		
                 user_id
             },
             {
                 menu_name: 'Contacts',	
                 menu_parent: 'null',	
-                menu_position: '8',		
+                meun_id: '5',		
                 user_id
             },
             {
                 menu_name: 'Note',	
                 menu_parent: 'null',	
-                menu_position: '9',		
+                meun_id: '6',		
                 user_id
             },
         ]
@@ -113,12 +158,13 @@ document.addEventListener('click', e => {
 
         /* Begin form inputs */
         const forminputs = {
+                user_id,
                 firstname: classValueSelector('firstname'),
                 lastname: classValueSelector('lastname'),
                 phone: classValueSelector('phone'),
                 residence: classValueSelector('residence'),
                 email: classValueSelector('email'),
-                hiredate: classValueSelector('hiredate'),
+                hire_date: classValueSelector('hire_date'),
                 birthdate: classValueSelector('birthdate'),
                 username: classValueSelector('username'),
                 password: classValueSelector('password'),
@@ -130,8 +176,12 @@ document.addEventListener('click', e => {
         const checkValueLength = Object.values(forminputs).map( v => v
         ).filter(Boolean)
 
-        if(checkValueLength.length < 10){
-            Error('addUserModalClass','All fields required!')
+        if(checkValueLength.length < 10) {
+            return Error('addUserModalClass','All fields required!')
+        }
+
+        if(forminputs.password !== forminputs.repassword) { 
+            return Error('addUserModalClass','Passwords do not match!')
         }
 
         /* End form inputs */
@@ -140,28 +190,72 @@ document.addEventListener('click', e => {
         fd.append('users', JSON.stringify(forminputs))
         fd.append('menu', JSON.stringify(menu_items))
 
-        fetch('router.php?controller=User&task=add_user',
+        const resp = await fetch('router.php?controller=User&task=add_user',
         {
             method: 'Post',
             body: new URLSearchParams(fd)
         })
-        .then( resp => resp.text() )
-        .then( data => {
-            if( data.indexOf('error') != -1 ){
-                Error('addUserModalClass', data)
-            }
-            else{
-                Success('addUserModalClass',data)
-            }
-        })
+
+        const data = await resp.text()
+
+        if( data.indexOf('errors') != -1 ){
+            Error('addUserModalClass', data)
+        }
+        else{
+            Success('addUserModalClass',data)
+
+            getUsers( ( data ) => {
+
+                const arr = data.map( v => {
+                    return v.users.map( v => {
+                        return Lists({
+                            editclass: 'edituser',
+                            deltclass: 'deltuser',
+                            fnameclass: 'ufname',
+                            name: v.firstname+' '+v.lastname,
+                            id: v.user_id
+                        })
+            
+                    } )
+                }).join('')
+
+                classSelector('scroll-inner').innerHTML = arr
+
+            })
+
+
+        }
+
+        
     }
 
+    addNewUser()
+
+    }
+
+
     if(e.target.matches('.ufname')){
-        const { id } = e.target.dataset
 
-        const getSingleUserdetails = obj.filter( v => v.user_id === id ).map( v => (userdetails(v))).join('')
+        getUsers((data) => {
+            const { id } = e.target.dataset
 
-        classSelector('col1').innerHTML = getSingleUserdetails
+            const obj = Object.values(data).map( v => v.users.map(v => ({
+                user_id: v.user_id,
+                firstname: v.firstname,
+                lastname: v.lastname,
+                phone: v.phone,
+                residence: v.residence,
+                hire_date: v.hire_date
+            }))).flat(Infinity)
+
+
+
+            const getSingleUserdetails = obj.filter( v => v.user_id === id ).map( v => (userdetails(v))).join('')
+    
+            classSelector('col1').innerHTML = getSingleUserdetails
+
+        })
+
     }
 
     if(e.target.matches('.addUser')){
@@ -171,12 +265,8 @@ document.addEventListener('click', e => {
 
 })
 
-window.addEventListener('load', e => {
-    classSelector('col1').innerHTML = userdetails()
-    classSelector('hiredate').valueAsDate = new Date()
-})
 
-
+//This is the form inputs for users 
 const addUserForm = () => (
     `    
     ${Title('New User Details')}
@@ -229,7 +319,7 @@ const addUserForm = () => (
         ${
             textInput({
                 type: 'date',
-                classname: 'hiredate',
+                classname: 'hire_date',
                 required: true,
                 label: 'Hire Date'
             })
@@ -268,6 +358,14 @@ const addUserForm = () => (
                 label: 'Re-Password'
             })
          }
+         ${
+            textInput({
+                type: 'hidden',
+                classname: 'userid',
+                required: false,
+                label: ''
+            })
+         }
         </div>
     </div>
 
@@ -290,21 +388,23 @@ const addUserForm = () => (
 )
     
 
-const Employees = () => {
+//Create user page 
+getUsers( ( data ) => {
 
-    const arr = obj.map( v => {
-        return Lists({
-            editclass: 'edituser',
-            deltclass: 'deltuser',
-            fnameclass: 'ufname',
-            name: v.firstname+' '+v.lastname,
-            id: v.user_id,
-            role_id: v.role_id || 0
-        })
+    const arr = data.map( v => {
+        return v.users.map( v => {
+            return Lists({
+                editclass: 'edituser',
+                deltclass: 'deltuser',
+                fnameclass: 'ufname',
+                name: v.firstname+' '+v.lastname,
+                id: v.user_id
+            })
+
+        } )
     }).join('')
 
-
-        return `
+        const output = `
         <div class="container mb-2">
         <div class="row gap-3">
 
@@ -328,9 +428,17 @@ const Employees = () => {
         </div>
 
         ${Modalbox('ADD USER','addUserModalClass', addUserForm())}
+
+    
         `
 
-}
+        document.querySelector('.root').innerHTML = output
+        classSelector('hire_date').valueAsDate = new Date()
+        classSelector('col1').innerHTML = userdetails()
 
-document.querySelector('.root').innerHTML = Employees()
+})
+
+
+
+
 

@@ -23,6 +23,11 @@ class Widget{
 		echo json_encode($qry);
 	}
 
+	public function get_max_user_id() {
+		$max_id = DB::get_row("SELECT MAX(user_id) AS id FROM users");
+		echo $max_id['id'];
+	}
+
 
 	
 }

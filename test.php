@@ -1,13 +1,20 @@
 <?php 
-require_once 'model/model.php';
+require_once 'model/utils.php';
 
-$user_id = 1;
+$arr = array( 
+"Dashboard",
+"null",
+"1",
+2,
+"Sales",
+"null",
+"2",
+2,
+"Contacts",
+"null",
+"8",
+2
+);
 
-$name = json_decode(file_get_contents(dirname(__FILE__).'/assets/logs/users.txt'), TRUE);
-$val = array_filter($name, function($v){
-    return $v;
-});
 
-$fullname = $val[0]['firstname'].' '.$val[0]['lastname'];
-
-echo $fullname;
+echo insertPlaceholders( $arr, 4 );

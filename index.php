@@ -6,7 +6,7 @@ if(!file_exists(dirname(__FILE__).'/model/constants.php')){
 	include 'install.html';
     exit;
 }
-include dirname(__FILE__).'/model/model.php'; 
+include dirname(__FILE__).'/model/utils.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">

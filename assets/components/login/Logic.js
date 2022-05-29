@@ -30,11 +30,9 @@
                     ErrorResult('output1',data)
                 }
                 else{
-                    const splt = data.split('-')
-                    sessionStorage.setItem('zsdf', splt[0])
-                    sessionStorage.setItem('lastid', splt[1])
+                    sessionStorage.setItem('zsdf', data)
                     const sess = sessionStorage.getItem('zsdf')
-                    if(sess !== splt[0]) return ErrorResult('output1','Access denied!')
+                    if(sess !== data) return ErrorResult('output1','Access denied!')
                     window.location = 'index.php'
                 }
             })

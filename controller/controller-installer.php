@@ -62,10 +62,11 @@
 			lastname VARCHAR(100) NOT NULL,
 			phone VARCHAR(100) NOT NULL,
 			email VARCHAR(100) NOT NULL,
-			location VARCHAR(100) NOT NULL,
+			residence VARCHAR(100) NOT NULL,
 			photo VARCHAR(100) NOT NULL,
 			hire_date DATE NOT NULL,
 			date DATETIME NOT NULL,
+			birthdate DATE NOT NULL,
 			signature VARCHAR(100) NOT NULL,
 			username VARCHAR(100) NOT NULL,
 			password VARCHAR(100) NOT NULL,
@@ -308,14 +309,20 @@
 			usermenu_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			menu_name VARCHAR(150) NOT NULL,
 			menu_parent VARCHAR(150) NOT NULL,
-			menu_position INT(11) NOT NULL,
-			user_id INT(11) NOT NULL
+			menu_id INT(11) NOT NULL,
+			user_id INT(11) NOT NULL,
+			FOREIGN KEY fmd(user_id) REFERENCES users(user_id)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE,
+			FOREIGN KEY fmpoid(menu_id) REFERENCES menu(menu_id)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE
 			)ENGINE=InnoDB;
 			";
 			$conn->query($tbl13);
 
 			$qry = $conn->prepare("INSERT INTO users(firstname,lastname,username,password,email,date,hire_date)  
-			VALUES (?,?,?,?,?,curdate(),curdate() )");
+			VALUES (?,?,?,?,?,NOW(),curdate() )");
 			$qry->bindParam(1, $firstname);
 			$qry->bindParam(2, $lastname);
 			$qry->bindParam(3, $username);
@@ -326,27 +333,25 @@
 			$conn->query("INSERT INTO menu(menu_id, menu_name,menu_parent) VALUES
 			('1', 'Dashboard','null'),
 			('2', 'Sales','null'),
-			('6', 'Employees','null'),
-			('7', 'Products','null'),
-			('8', 'Contacts','null'),
-			('9', 'Note','null'),
-			('10', 'SMS','null'),
-			('11', 'Leads','null'),
-			('12', 'Opportunity','null'),
-			('13', 'Settings','null')
+			('3', 'Users','null'),
+			('4', 'Products','null'),
+			('5', 'Contacts','null'),
+			('6', 'Note','null'),
+			('7', 'SMS','null'),
+			('8', 'Leads','null'),
+			('9', 'Settings','null')
 			");
 
-			$conn->query("INSERT INTO user_menu(usermenu_id,menu_name,menu_parent,menu_position,user_id) VALUES
+			$conn->query("INSERT INTO user_menu(usermenu_id,menu_name,menu_parent,menu_id,user_id) VALUES
 			('1', 'Dashboard','null','1','1'),
 			('2', 'Sales','null','2','1'),
-			('6', 'Employees','null','6','1'),
-			('7', 'Products','null','7','1'),
-			('8', 'Contacts','null','8','1'),
-			('9', 'Note','null','9','1'),
-			('10', 'SMS','null','10','1'),
-			('11', 'Leads','null','11','1'),
-			('12', 'Opportunity','null','12','1'),
-			('13', 'Settings','null','13','1')
+			('3', 'Users','null','3','1'),
+			('4', 'Products','null','4','1'),
+			('5', 'Contacts','null','5','1'),
+			('6', 'Note','null','6','1'),
+			('7', 'SMS','null','7','1'),
+			('8', 'Leads','null','8','1'),
+			('9', 'Settings','null','9','1')
 			");
 
 			$conn->query("INSERT INTO settings(comp_name,currency,duration) VALUES('Emagweb Solutions','GHs','Month')");

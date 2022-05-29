@@ -55,26 +55,105 @@ document.addEventListener('click', e => {
 
     if(e.target.matches('.addUserModalClass')){
 
-        const user_id = sessionStorage.getItem('zsdf')
+        const user_id = Number(sessionStorage.getItem('lastid')) + 1
 
-        console.log(user_id)
+        /* Begin all selected previlleges */
+        const previlleges = Array.from(document.querySelectorAll('.previllege'))
+
+        let obj = []
+        previlleges.forEach( v => {
+            if(v.checked){
+
+                const menu_position = v.value === 'Products'? 7 : v.value === 'Leads'? 11 : v.value === 'SMS'? 10 : 0
+
+                const menu_parent = v.value === 'Salesinvoice'? 'previllege' : null
+
+                obj.push(
+                    {
+                        menu_name: v.value,	
+                        menu_parent,
+                        menu_position,	
+                        user_id,
+                    }
+                )
+            }
+        })
+
+        const menus = [
+            {
+                menu_name: 'Dashboard',	
+                menu_parent: 'null',	
+                menu_position: '1',		
+                user_id
+            },
+            {
+                menu_name: 'Sales',	
+                menu_parent: 'null',	
+                menu_position: '2',		
+                user_id
+            },
+            {
+                menu_name: 'Contacts',	
+                menu_parent: 'null',	
+                menu_position: '8',		
+                user_id
+            },
+            {
+                menu_name: 'Note',	
+                menu_parent: 'null',	
+                menu_position: '9',		
+                user_id
+            },
+        ]
+
+        const menu_items = Object.values([...menus,...obj]).map( v => Object.values(v)).flat(Infinity)
 
 
-        // const previlleges = document.querySelectorAll('.previllege')
+        /* End all selected previlleges */
 
-        // Array.from()
+        /* Begin form inputs */
+        const forminputs = {
+                firstname: classValueSelector('firstname'),
+                lastname: classValueSelector('lastname'),
+                phone: classValueSelector('phone'),
+                residence: classValueSelector('residence'),
+                email: classValueSelector('email'),
+                hiredate: classValueSelector('hiredate'),
+                birthdate: classValueSelector('birthdate'),
+                username: classValueSelector('username'),
+                password: classValueSelector('password'),
+                repassword: classValueSelector('repassword'),
+        }
 
-        // menu_name	
-        // menu_parent	
-        // menu_position	
-        // user_id	
+        Spinner('addUserModalClass')
 
+        const checkValueLength = Object.values(forminputs).map( v => v
+        ).filter(Boolean)
 
-        // Spinner('addUserModalClass')
+        if(checkValueLength.length < 10){
+            Error('addUserModalClass','All fields required!')
+        }
 
-        // Error('addUserModalClass','This is an error message')
+        /* End form inputs */
 
-        // Success('addUserModalClass','This is a success message')
+        const fd = new FormData()
+        fd.append('users', JSON.stringify(forminputs))
+        fd.append('menu', JSON.stringify(menu_items))
+
+        fetch('router.php?controller=User&task=add_user',
+        {
+            method: 'Post',
+            body: new URLSearchParams(fd)
+        })
+        .then( resp => resp.text() )
+        .then( data => {
+            if( data.indexOf('error') != -1 ){
+                Error('addUserModalClass', data)
+            }
+            else{
+                Success('addUserModalClass',data)
+            }
+        })
     }
 
     if(e.target.matches('.ufname')){

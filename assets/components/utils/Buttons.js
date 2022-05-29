@@ -1,7 +1,4 @@
 const Buttons = ( obj ) => {
-
-	console.log(Object.values(obj[0]))
-
 	return `
 	<div class="bg-white mb-1 flex top-btns">
 	${

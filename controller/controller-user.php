@@ -1,6 +1,16 @@
 <?php
 class User{
 
+	public function add_user(){
+		extract($_POST);
+
+		extract(json_decode($users, TRUE));
+		$menu = json_decode($menu, TRUE);
+
+		echo $firstname;
+		
+	}
+
 	public function get_users(){
 		$qry = DB::query("SELECT * FROM users");
 		echo json_encode($qry);

@@ -20,9 +20,11 @@
 					//Update inactive users 
 					DB::query("UPDATE users SET  date = now() WHERE user_id = ?",array($_SESSION['edfghl']));
 
+					$max_id = DB::get_row("SELECT MAX(user_id) AS id FROM users");
+
 					history($_SESSION['edfghl']);
 					
-					echo $_SESSION['edfghl'];
+					echo $_SESSION['edfghl'].'-'.$max_id['id'];
 				}
 				else{
 					?>

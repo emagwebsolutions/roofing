@@ -339,7 +339,8 @@
 			('6', 'Note','null'),
 			('7', 'SMS','null'),
 			('8', 'Leads','null'),
-			('9', 'Settings','null')
+			('9', 'Settings','null'),
+			('10', 'Privileges','none')
 			");
 
 			$conn->query("INSERT INTO user_menu(usermenu_id,menu_name,menu_parent,menu_id,user_id) VALUES
@@ -351,7 +352,8 @@
 			('6', 'Note','null','6','1'),
 			('7', 'SMS','null','7','1'),
 			('8', 'Leads','null','8','1'),
-			('9', 'Settings','null','9','1')
+			('9', 'Settings','null','9','1'),
+			('10', 'Salesinvoice','Privileges','10','1')
 			");
 
 			$conn->query("INSERT INTO settings(comp_name,currency,duration) VALUES('Emagweb Solutions','GHs','Month')");

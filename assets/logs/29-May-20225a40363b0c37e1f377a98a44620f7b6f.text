@@ -1,5 +1,17 @@
 
 Date: 29 May 2022
+Time: 15:29:09
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`roofing`.`user_menu`, CONSTRAINT `fmpoid` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ SQL ERROR:
+INSERT INTO user_menu(
+				menu_name,
+				menu_parent,
+				menu_id,	
+				user_id
+		) VALUES (?,?,?,?),(?,?,?,?),(?,?,?,?),(?,?,?,?),(?,?,?,?),(?,?,?,?),(?,?,?,?),(?,?,?,?)
+
+
+Date: 29 May 2022
 Time: 14:17:32
 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'menu_ie' in 'field list'
  SQL ERROR:

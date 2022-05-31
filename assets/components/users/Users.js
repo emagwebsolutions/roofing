@@ -13,6 +13,8 @@ import Success from '../utils/Success.js'
 import { textInput,checkBox } from '../utils/inputFields.js'
 import Title from '../utils/Title.js'
 import clearFormFields from '../utils/clearFormFields.js'
+import Tabs from "../utils/Tabs.js"
+import Table from '../utils/Table.js'
 
 // This function displays list of users
 const onclickDisplayAsingleUser = ( v ) => {
@@ -327,7 +329,7 @@ document.addEventListener('keyup', e => {
         })
     }
 
-    
+
 })
 
 
@@ -648,6 +650,43 @@ getUsers( ( data ) => {
         } )
     }).join('')
 
+    const tablehead = `
+        <ul>
+        <li class="col-100">Date</li>
+        <li class="col-600">Message</li>
+        <li class="col-100">Action</li>
+        </ul>
+    `
+    
+    const tablebody = `
+        <ul>
+        <li class="col-100">2022-12-03</li>
+        <li class="col-600">He was paind a lot of money</li>
+        <li class="col-100">
+            <i class="fa fa-edit" title="EDIT" ></i>
+            <i class="fa fa-trash" title="DELETE"></i>
+        </li>
+        </ul>
+
+
+    `
+
+    const tabbtn = `
+        <ul>
+            <li class="active">
+                <a href="javascript:void(0);" data-tab-target="#tab1">
+                NOTE 
+                </a>
+            </li>
+        </ul>
+    `
+    const tabcontent = `
+        <div id="tab1" class="active hide-tab">
+        ${Table(tablehead,tablebody)}
+        </div>
+
+    `
+
         const output = `
         <div class="container mb-2">
         <div class="row gap-3">
@@ -666,6 +705,10 @@ getUsers( ( data ) => {
                     }
                 ])}
                 ${ DetailsBox('col1','col2') }
+
+                
+
+                ${Tabs(tabbtn,tabcontent)}
             </div>
 
         </div>

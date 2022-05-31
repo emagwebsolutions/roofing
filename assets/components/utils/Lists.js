@@ -1,8 +1,8 @@
 const Lists = ( v ) => {
 
 	const btns = `
-	<i class="fa fa-edit edit-record  ${v.editclass}" data-id="${v.id}" ></i>
-	<i class="fa fa-trash delete-record  ${v.deltclass}" data-id="${v.id}" ></i>` 
+	<i class="fa fa-edit edit-record" title="EDIT"  ${v.editclass}" data-id="${v.id}" ></i>
+	<i class="fa fa-trash delete-record" title="DELETE" ${v.deltclass}" data-id="${v.id}" ></i>` 
 
 	const adminbtns = `
 	<i class="fa fa-lock   text-muted"></i>

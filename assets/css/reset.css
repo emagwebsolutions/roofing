@@ -81,4 +81,12 @@ a{
   background-color: hsl(var(--primary));
 }
 
+.hidebtn{
+  display: none;
+}
+
+.hidebtn.show{
+  display: block;
+}
+
 

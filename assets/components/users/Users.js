@@ -15,6 +15,7 @@ import Title from '../utils/Title.js'
 import clearFormFields from '../utils/clearFormFields.js'
 import Tabs from "../utils/Tabs.js"
 import Table from '../utils/Table.js'
+import Modalboxtwo from '../widgets/Modalboxtwo.js'
 
 // This function displays list of users
 const onclickDisplayAsingleUser = ( v ) => {
@@ -336,31 +337,35 @@ document.addEventListener('keyup', e => {
 //Start click events 
 document.addEventListener('click', e => {
 
-    if(e.target.matches('.deltuser')){
+    if(e.target.matches('.addNote')){
+
+        classSelector('modal-wrapper2').classList.add('show')
+    }
+
+    if(e.target.matches('.delete-record')){
         const { id } = e.target.dataset 
 
         if(confirm('Are you sure you want to delete!')){
             fetch(`router.php?controller=User&task=delete_user&user_id=${id}`)
-
             
-        getUsers( ( data ) => {
+            getUsers( ( data ) => {
 
-            const arr = data.map( v => {
-                return v.users.map( v => {
-                    return Lists({
-                        editclass: 'edituser',
-                        deltclass: 'deltuser',
-                        fnameclass: 'ufname',
-                        name: v.firstname+' '+v.lastname,
-                        id: v.user_id
-                    })
-        
-                } )
-            }).join('')
+                const arr = data.map( v => {
+                    return v.users.map( v => {
+                        return Lists({
+                            editclass: 'edituser',
+                            deltclass: 'deltuser',
+                            fnameclass: 'ufname',
+                            name: v.firstname+' '+v.lastname,
+                            id: v.user_id
+                        })
+            
+                    } )
+                }).join('')
 
-            classSelector('scroll-inner').innerHTML = arr
+                classSelector('scroll-inner').innerHTML = arr
 
-        })
+            })
         }
         else{
 
@@ -485,6 +490,8 @@ document.addEventListener('click', e => {
         getUsers((data) => {
             const { id } = e.target.dataset
 
+            classSelector('uid').value = id
+
             const obj = Object.values(data).map( v => v.users.map(v => ({
                 user_id: v.user_id,
                 firstname: v.firstname,
@@ -498,6 +505,8 @@ document.addEventListener('click', e => {
     
             classSelector('col1').innerHTML = getDetailsOfUser
         })
+
+        classSelector('addNote').classList.add('show')
 
     }
 
@@ -692,9 +701,8 @@ getUsers( ( data ) => {
         <div class="row gap-3">
 
             <div class="sidebar bg-white">
-
                 ${Sidebar(searchBox('search-users','Search users'),arr)}
-
+                <input type="hidden" class="uid">
             </div>
 
             <div class="cont">
@@ -702,23 +710,22 @@ getUsers( ( data ) => {
                     {
                         btnclass: 'addUser',
                         btnname: 'Add User'
+                    },
+                    {
+                        btnclass: 'addNote hidebtn',
+                        btnname: 'Add Note'
                     }
                 ])}
                 ${ DetailsBox('col1','col2') }
-
-                
-
                 ${Tabs(tabbtn,tabcontent)}
             </div>
-
         </div>
         </div>
 
         ${Modalbox('ADD USER','addUserModalClass', addUserForm())}
-
-    
+        ${Modalboxtwo('ADD NOTE','addNoteModalClass', 'NOTE FORM')}
         `
-
+           
         document.querySelector('.root').innerHTML = output
         classSelector('hire_date').valueAsDate = new Date()
         classSelector('col1').innerHTML = onclickDisplayAsingleUser()

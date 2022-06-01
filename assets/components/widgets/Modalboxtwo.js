@@ -1,7 +1,7 @@
 
 
 document.addEventListener('click', e => {
-    if(e.target.matches('.close-modal')){
+    if(e.target.matches('.close-modal2')){
         const par = e.target.parentElement.parentElement.parentElement
         par.classList.remove('show')
         document.body.style.overflow = 'scroll'
@@ -9,20 +9,20 @@ document.addEventListener('click', e => {
 })
 
 window.addEventListener('click', e => {
-    if(e.target.matches('.modal-wrapper')){
+    if(e.target.matches('.modal-wrapper2')){
         e.target.classList.remove('show')
         document.body.style.overflow = 'scroll'
     }
 })
 
-const Modalbox = ( title = '', btnclass = '', body='BODY AREA' ) => (
+const Modalboxtwo = ( title = '', btnclass = '', body='BODY AREA' ) => (
     `
-    <div class="modal-wrapper">
+    <div class="modal-wrapper2">
     
         <div class="modal-inner">
             <div class="modal-top">
                 <h1 class="modal-heading">${ title }</h1> 
-                <a href="javascript:void(0);" class="close-modal">&times;</a>
+                <a href="javascript:void(0);" class="close-modal2">&times;</a>
             </div>
             <div class="modal-body">
                 ${body}
@@ -35,4 +35,4 @@ const Modalbox = ( title = '', btnclass = '', body='BODY AREA' ) => (
     `
 )
 
-export default Modalbox
+export default Modalboxtwo

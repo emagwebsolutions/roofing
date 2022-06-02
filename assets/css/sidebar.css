@@ -1,0 +1,10 @@
+.scroll-wrapper{
+    padding: 1em;
+    margin: .6em;
+  }
+
+  .scroll-inner{
+    height: 57rem;
+    overflow-y: scroll;
+    overflow-x: none;
+  }

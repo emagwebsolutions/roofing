@@ -1,0 +1,46 @@
+
+.div-table{
+    height: 42rem; 
+    overflow-y: scroll;
+    overflow-x: none;
+
+}
+
+.div-table-head{
+    background-color: #dedede;
+    margin-top: .5rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+.div-table-head ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: hsl(var(--black));
+}
+
+.div-table-head ul li{
+    text-transform: uppercase;
+}
+
+.div-table-body{
+    margin-top: .5rem;
+    font-size: 1.2rem;
+}
+
+.div-table-body ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: hsl(var(--black));
+    padding-inline: 1rem;
+    padding-block: .5em;
+    border-bottom: solid hsl(var(--muted)).1rem;
+}
+
+.div-table-body ul li{
+    text-transform: uppercase;
+    color: hsl(var(--muted));
+}
+

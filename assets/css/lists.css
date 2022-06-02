@@ -9,8 +9,6 @@
   color: #666;
 }
 
-
-
 .list > div:nth-of-type(1){
   flex: 17rem 1 1;
 }
@@ -22,17 +20,6 @@
   justify-content: flex-start!important;
   align-items: center;
   gap: .8rem;
-}
-
-.scroll-wrapper{
-  padding: 1em;
-  margin: .6em;
-}
-
-.scroll-inner{
-  height: 50rem;
-  overflow-y: scroll;
-  overflow-x: none;
 }
 
 .edit-record,

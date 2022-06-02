@@ -8,7 +8,7 @@
 @import 'inputs.css';
 @import 'widgets.css';
 @import 'installation.css';
-@import 'employees.css';
+@import 'users.css';
 @import 'lists.css';
 @import 'searchBox.css';
 @import 'detailsbox.css';
@@ -16,6 +16,8 @@
 @import 'modalbox.css';
 @import 'accordion.css';
 @import 'tabs.css';
+@import 'sidebar.css';
+@import 'table.css';
 
 
 

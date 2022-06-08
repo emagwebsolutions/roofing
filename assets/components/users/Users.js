@@ -15,6 +15,7 @@ import Title from '../utils/Title.js'
 import clearFormFields from '../utils/clearFormFields.js'
 import Table from '../utils/Table.js'
 import Modalboxtwo from '../widgets/Modalboxtwo.js'
+import ModalDisplayDetails from '../widgets/ModalDisplayDetails.js'
 import { Tabs,tabContent,tabMenu } from '../utils/Tabs.js'
 
 
@@ -36,7 +37,7 @@ const populateUserTabs = (data,Table,formatDate,id) => {
     const getDetailsOfUserNote = notes.filter( v => v.id === id ).map( v => (`
         <ul>
             <li class="col-100">${formatDate(v.date)}</li>
-            <li class="col-600">${v.message.substring(0,50)}......</li>
+            <li class="col-600 view-note cursor" data-id="${v.note_id}">${v.message.substring(0,50)}......</li>
             <li class="col-100 flex gap-2">
                 <i class="fa fa-edit edit-note cursor" title="EDIT" data-id="${v.note_id}"></i>
                 <i class="fa fa-trash delete-note cursor" title="DELETE" data-id="${v.note_id}"></i>
@@ -657,6 +658,37 @@ document.addEventListener('click', e => {
     }
 
 
+
+    
+
+    if(e.target.matches('.view-note')) {
+        //On click display and edit a user
+        document.body.style.overflow = 'hidden'
+        classSelector('modal-wrapper3').classList.add('show')
+
+        getUsers((data) => {
+  
+            const id  = e.target.dataset.id
+
+            const notes = Object.values(data).map( v => v.note.map(v => ({
+                note_id: v.note_id,
+                id: v.id,
+                message: v.message,
+                date: v.date
+            }))).flat(Infinity)
+        
+            const v = notes.filter( v => v.note_id === id )[0]
+
+            clearNoteFields()
+
+            //Populate user input field 
+            classSelector('vnotemessage').value = v.message
+            classSelector('vnotedate').valueAsDate =  new Date(v.date)
+        })
+
+    }
+
+
     if(e.target.matches('.ufname')){
 
         //Onclick get a user details and display 
@@ -712,6 +744,26 @@ const addNoteForm = () => (`
     ${
         textArea({
             classname: 'notemessage',
+            placeholder: 'Message'
+        })
+    }
+    <br>
+`)
+
+const viewNoteForm = () => (`
+    <br><br>
+    ${
+        textInput({
+            type: 'date',
+            classname: 'vnotedate',
+            required: true,
+            label: 'Date'
+        })
+    }
+
+    ${
+        textArea({
+            classname: 'vnotemessage',
             placeholder: 'Message'
         })
     }
@@ -912,6 +964,7 @@ getUsers( ( data ) => {
 
     ${Modalbox('ADD USER','addUserModalClass', addUserForm())}
     ${Modalboxtwo('NOTE','addNoteModalClass', addNoteForm())}
+    ${ModalDisplayDetails('NOTE',viewNoteForm())}
     `
 
     document.querySelector('.root').innerHTML = output

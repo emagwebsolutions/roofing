@@ -1,7 +1,7 @@
-const Success = ( outputClass,message ) => {
+const Success = ( outputClass,message, wrapper='modal-wrapper' ) => {
 
 	setTimeout( () => {
-		document.querySelector('.modal-wrapper').classList.remove('show')
+		document.querySelector(`.${wrapper}`).classList.remove('show')
 		document.querySelector(`.${outputClass}`).textContent = 'SAVE'
 		document.body.style.overflow = 'scroll'
 	}, 1000)

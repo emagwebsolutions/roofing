@@ -8,7 +8,7 @@ const getUsers = async ( callback ) => {
 	const user_menu = await usermenuData.json()
 
 	//Get data from note
-	const noteData = await fetch('router.php?controller=User&task=get_note')
+	const noteData = await fetch('router.php?controller=Note&task=get_note')
 	const note = await noteData.json()
 
 	const data = Object.values(users).map( v => {
@@ -21,7 +21,7 @@ const getUsers = async ( callback ) => {
 			status: v.status,
 			user_menu: Object.values(user_menu).filter( va => va.user_id === v.user_id),
 			users: Object.values(users).filter( val => val.user_id === v.user_id),
-			note: Object.values(note).filter( valu => valu.assigned === v.user_id)
+			note: Object.values(note).filter( valu => valu.id === v.user_id)
 		}
 		return user
 	})

@@ -34,7 +34,6 @@
 	
 
 	const textArea = ( obj )=>{
-
 		const { classname,placeholder } = Object.assign(
 			{
 				classname: '',

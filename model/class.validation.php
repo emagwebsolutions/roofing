@@ -36,6 +36,14 @@ class Validation{
 
 	------------------------------------------------------------------*/
 
+
+	public static function textboxcleaner($data){
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
+
 	public static function ctypeDigit($arr, $mess){
 		if(is_array($arr)){
 			$im = implode('', $arr);

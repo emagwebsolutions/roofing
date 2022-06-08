@@ -12,31 +12,67 @@
         }
 
     })
+    
+    export const tabMenu = (obj) => {
 
+        const output = obj.map( v => (`
+            <li class="${v.active}">
+                <a href="javascript:void(0);" data-tab-target="#${v.tabTarget}">
+                    ${v.name}
+                </a>
+            </li>     
+        `)).join('')
+        return `
+            <ul>
+                ${output}
+            </ul>
+        `
 
-const Tabs = ( tabbtn='',tabcontent='' ) => (
-    `<div class="tabs">
-        <div class="tabs-top">
-            <!-- BEGIN TABS -->
-            <div class="tabs-top-inner">
-            ${tabbtn}
-                <!--<ul>
-                <li class="active">
-                <a href="javascript:void(0);"            data-tab-target="#tab1">BOX ONE</a>
-                </li>
-                </ul>-->
+    }
+
+    export const tabContent = (obj) => obj.map( v => v.tab ).join('')
+        
+    export const Tabs = ( tabMenu,tabContent ) => {
+
+        return `<div class="tabs">
+            <div class="tabs-top">
+                <!-- BEGIN TABS -->
+                <div class="tabs-top-inner">
+                ${tabMenu}
+                    <!--<ul>
+                    <li class="active">
+                    <a href="javascript:void(0);"            data-tab-target="#tab1">BOX ONE</a>
+                    </li>
+                    </ul>-->
+                </div>
+                <!-- END TABS -->
             </div>
-            <!-- END TABS -->
+
+            <div class="tabs-content">
+                ${tabContent}
+                <!--<div id="tab1" class="active hide-tab">
+                TAB CONTENT ONE
+                </div>-->
+            </div>
         </div>
+        `}
 
-        <div class="tabs-content">
-             ${tabcontent}
-            <!--<div id="tab1" class="active hide-tab">
-            TAB CONTENT ONE
-            </div>-->
-        </div>
-    </div>`
+    //USAGE 
+    // import { Tabs,tabContent,tabMenu } from '../utils/Tabs.js'
 
-)
+    // const tabContentObj = [
+    //     {
+    //         tab:  `
+    //             <div id="tab1" class="active hide-tab">
+    //             ${Table(tablehead,tablebody)}
+    //             </div>
+    //         `
+    //     }
+    // ]
 
-export default Tabs
+    // const tabMenuObj = [
+    //     {name: '', active: '',tabTarget: ''}
+    // ]
+
+    // Tabs(tabMenu(tabMenuObj),tabContent(tabContentObj))
+

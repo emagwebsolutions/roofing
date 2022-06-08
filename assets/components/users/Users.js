@@ -10,16 +10,63 @@ import Modalbox from '../widgets/Modalbox.js'
 import Spinner from '../utils/Spinner.js'
 import Error from '../utils/Error.js'
 import Success from '../utils/Success.js'
-import { textInput,checkBox } from '../utils/inputFields.js'
+import { textInput,checkBox,textArea } from '../utils/inputFields.js'
 import Title from '../utils/Title.js'
 import clearFormFields from '../utils/clearFormFields.js'
-import Tabs from "../utils/Tabs.js"
 import Table from '../utils/Table.js'
 import Modalboxtwo from '../widgets/Modalboxtwo.js'
+import { Tabs,tabContent,tabMenu } from '../utils/Tabs.js'
+
+
+const clearNoteFields = () => {
+    classSelector('noteid').value =  null
+    classSelector('notemessage').value = null
+    classSelector('notedate').valueAsDate = null
+}
+const populateUserTabs = (data,Table,formatDate,id) => {
+
+    //BEGIN NOTE
+    const notes = Object.values(data).map( v => v.note.map(v => ({
+        note_id: v.note_id,
+        id: v.id,
+        message: v.message,
+        date: v.date
+    }))).flat(Infinity)
+
+    const getDetailsOfUserNote = notes.filter( v => v.id === id ).map( v => (`
+        <ul>
+            <li class="col-100">${formatDate(v.date)}</li>
+            <li class="col-600">${v.message.substring(0,50)}......</li>
+            <li class="col-100">
+                <i class="fa fa-edit edit-note cursor" title="EDIT" data-id="${v.note_id}"></i>
+                <i class="fa fa-trash delete-note cursor" title="DELETE" data-id="${v.note_id}"></i>
+            </li>
+        </ul>
+    `)).join('')
+
+    
+    const tablehead = `
+    <ul>
+    <li class="col-100">Date</li>
+    <li class="col-600">Message</li>
+    <li class="col-100">Action</li>
+    </ul>
+    `
+
+    const tablebody = getDetailsOfUserNote
+
+    classSelector('tabs-content').innerHTML = `
+    <div id="tab1" class="active hide-tab">
+    ${Table(tablehead,tablebody)}
+    </div>
+    `
+    //END NOTE
+
+}
 
 // This function displays list of users
 const onclickDisplayAsingleUser = ( v ) => {
-    const date = v?.hire_date? formatDate(v?.hire_date)  : ''
+    const date = v?.hire_date ? formatDate(v?.hire_date)  : ''
     return  `<ul>
     <li> 
         <ul>
@@ -112,6 +159,7 @@ const getCheckInputValues2 = ( user_id ) => {
     const previlleges = Array.from(document.querySelectorAll('.previllege'))
 
     let obj = []
+
     previlleges.forEach( v => {
         if(v.checked && !v.dataset.menu_id ){
 
@@ -150,6 +198,69 @@ const getInputFileds = ( user_id ) => {
             password: classValueSelector('password'),
             repassword: classValueSelector('repassword'),
         }
+}
+
+
+const addNoteToDatabase = async () => {
+
+    const fd = new FormData()
+
+    const id = classSelector('uid').value
+    const message = classSelector('notemessage').value
+    fd.append('id', id)
+    fd.append('message', message)
+    fd.append('date', classSelector('notedate').value)
+
+    const resp = await fetch('router.php?controller=Note&task=add_note',
+    {
+        method: 'Post',
+        body: new URLSearchParams(fd)
+    })
+
+    const data = await resp.text()
+
+    if( data.indexOf('errors') != -1 ){
+        Error('addNoteModalClass', data)
+    }
+    else{
+        Success('addNoteModalClass',data,'modal-wrapper2')
+        classSelector('notemessage').value = null
+
+        getUsers( data => {
+            populateUserTabs(data,Table,formatDate,id)
+        })
+    }
+
+}
+
+const editNoteAndSaveToDatabase = async () => {
+    const fd = new FormData()
+    const note_id = classSelector('noteid').value
+    const user_id = classSelector('uid').value
+
+    fd.append('note_id', note_id)
+    fd.append('message', classSelector('notemessage').value)
+    fd.append('date', classSelector('notedate').value)
+
+    const resp = await fetch('router.php?controller=Note&task=edit_note',
+    {
+        method: 'Post',
+        body: new URLSearchParams(fd)
+    })
+
+    const data = await resp.text()
+
+    if( data.indexOf('errors') != -1 ){
+        Error('addNoteModalClass', data)
+    }
+    else{
+        Success('addNoteModalClass',data,'modal-wrapper2')
+        getUsers( data => {
+            populateUserTabs(data,Table,formatDate,user_id)
+        })
+    }
+
+
 }
 
 
@@ -220,8 +331,6 @@ const addNewUserToDatabase = async () => {
         })
     }
 }
-
-
 
 
 const editNewUserAndSaveToDatabase = async () => {
@@ -338,7 +447,7 @@ document.addEventListener('keyup', e => {
 document.addEventListener('click', e => {
 
     if(e.target.matches('.addNote')){
-
+        clearNoteFields()
         classSelector('modal-wrapper2').classList.add('show')
     }
 
@@ -349,7 +458,6 @@ document.addEventListener('click', e => {
             fetch(`router.php?controller=User&task=delete_user&user_id=${id}`)
             
             getUsers( ( data ) => {
-
                 const arr = data.map( v => {
                     return v.users.map( v => {
                         return Lists({
@@ -373,8 +481,8 @@ document.addEventListener('click', e => {
  
   
     }
-    if(e.target.matches('.checkClick')) {
 
+    if(e.target.matches('.checkClick')) {
         const deleteUserPrivilege = async () => {
             const { menu_id, user_id } = e.target.dataset 
 
@@ -426,14 +534,12 @@ document.addEventListener('click', e => {
             classSelector('hire_date').valueAsDate =  new Date(v.hire_date)
             classSelector('birthdate').valueAsDate =  new Date(v.birthdate)
             classSelector('username').value = v.username
-
+  
             //Loop through user privileges or menus 
             const menus = Object.values(data).map( v => v.user_menu.map(v => ({
                 user_id: v.user_id,
                 menu_id: v.menu_id
             }))).flat(Infinity)
-
-    
 
             //Populate checkbox of a user
             clearUserCheckboxAndDataset() 
@@ -470,7 +576,13 @@ document.addEventListener('click', e => {
                     classSelector('salesinvoice').setAttribute('data-user_id', v.user_id)
                 }
             })
+
+
+          
+            
+
         })
+
     }
 
 
@@ -483,6 +595,44 @@ document.addEventListener('click', e => {
             }
     }
 
+    if(e.target.matches('.addNoteModalClass')){
+            if(document.querySelector('.noteid').value){
+                editNoteAndSaveToDatabase()
+            }
+            else{
+                addNoteToDatabase()
+            }
+    }
+
+    
+    if(e.target.matches('.edit-note')) {
+        //On click display and edit a user
+        document.body.style.overflow = 'hidden'
+        classSelector('modal-wrapper2').classList.add('show')
+
+        getUsers((data) => {
+  
+            const id  = e.target.dataset.id
+
+            const notes = Object.values(data).map( v => v.note.map(v => ({
+                note_id: v.note_id,
+                id: v.id,
+                message: v.message,
+                date: v.date
+            }))).flat(Infinity)
+        
+            const v = notes.filter( v => v.note_id === id )[0]
+
+            clearNoteFields()
+
+            //Populate user input field 
+            classSelector('noteid').value =  v.note_id
+            classSelector('notemessage').value = v.message
+            classSelector('notedate').valueAsDate =  new Date(v.date)
+        })
+
+    }
+
 
     if(e.target.matches('.ufname')){
 
@@ -492,6 +642,7 @@ document.addEventListener('click', e => {
 
             classSelector('uid').value = id
 
+            //Get user details
             const obj = Object.values(data).map( v => v.users.map(v => ({
                 user_id: v.user_id,
                 firstname: v.firstname,
@@ -504,6 +655,9 @@ document.addEventListener('click', e => {
             const getDetailsOfUser = obj.filter( v => v.user_id === id ).map( v => (onclickDisplayAsingleUser(v))).join('')
     
             classSelector('col1').innerHTML = getDetailsOfUser
+
+            populateUserTabs(data,Table,formatDate,id)
+
         })
 
         classSelector('addNote').classList.add('show')
@@ -519,6 +673,27 @@ document.addEventListener('click', e => {
     }
 
 })
+
+//This is the form inputs for users 
+const addNoteForm = () => (`
+    <br><br>
+    ${
+        textInput({
+            type: 'date',
+            classname: 'notedate',
+            required: true,
+            label: 'Date'
+        })
+    }
+
+    ${
+        textArea({
+            classname: 'notemessage',
+            placeholder: 'Message'
+        })
+    }
+    <br>
+`)
 
 
 //This is the form inputs for users 
@@ -641,11 +816,9 @@ const addUserForm = () => (
     
     `
 )
-    
 
 //Create user page and add to the user.html page 
 getUsers( ( data ) => {
-
     const arr = data.map( v => {
         return v.users.map( v => {
             return Lists({
@@ -659,50 +832,41 @@ getUsers( ( data ) => {
         } )
     }).join('')
 
-    const tablehead = `
-        <ul>
-        <li class="col-100">Date</li>
-        <li class="col-600">Message</li>
-        <li class="col-100">Action</li>
-        </ul>
-    `
+
+
+    // BEGIN TABS
+    const tabMenuObj = [
+        {name: 'Note', active: 'active',tabTarget: 'tab1'}
+    ]
+
+    let tabContentObj = [
+        {
+            tab:  `
+                <div id="tab1" class="active hide-tab">
     
-    const tablebody = `
-        <ul>
-        <li class="col-100">2022-12-03</li>
-        <li class="col-600">He was paind a lot of money</li>
-        <li class="col-100">
-            <i class="fa fa-edit" title="EDIT" ></i>
-            <i class="fa fa-trash" title="DELETE"></i>
-        </li>
-        </ul>
+                </div>
+            `
+        },
+        {
+            tab:  `
+                <div id="tab2" class="hide-tab">
+    
+                </div>
+            `
+        }
+    ]
 
 
-    `
+    // END TABS
 
-    const tabbtn = `
-        <ul>
-            <li class="active">
-                <a href="javascript:void(0);" data-tab-target="#tab1">
-                NOTE 
-                </a>
-            </li>
-        </ul>
-    `
-    const tabcontent = `
-        <div id="tab1" class="active hide-tab">
-        ${Table(tablehead,tablebody)}
-        </div>
-
-    `
-
-        const output = `
+    const output = `
         <div class="container mb-2">
         <div class="row gap-3">
 
             <div class="sidebar bg-white">
                 ${Sidebar(searchBox('search-users','Search users'),arr)}
                 <input type="hidden" class="uid">
+                <input type="hidden" class="noteid">
             </div>
 
             <div class="cont">
@@ -717,20 +881,26 @@ getUsers( ( data ) => {
                     }
                 ])}
                 ${ DetailsBox('col1','col2') }
-                ${Tabs(tabbtn,tabcontent)}
+                ${Tabs(tabMenu(tabMenuObj),tabContent(tabContentObj))}
+
             </div>
         </div>
         </div>
 
-        ${Modalbox('ADD USER','addUserModalClass', addUserForm())}
-        ${Modalboxtwo('ADD NOTE','addNoteModalClass', 'NOTE FORM')}
-        `
-           
-        document.querySelector('.root').innerHTML = output
-        classSelector('hire_date').valueAsDate = new Date()
-        classSelector('col1').innerHTML = onclickDisplayAsingleUser()
+    ${Modalbox('ADD USER','addUserModalClass', addUserForm())}
+    ${Modalboxtwo('NOTE','addNoteModalClass', addNoteForm())}
+    `
+
+    document.querySelector('.root').innerHTML = output
+    classSelector('hire_date').valueAsDate = new Date()
+    classSelector('col1').innerHTML = onclickDisplayAsingleUser()
+
+    document.querySelector('.notedate').valueAsDate = new Date()
 
 })
+
+
+
 
 
 

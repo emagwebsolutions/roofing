@@ -250,7 +250,7 @@
 			subject  VARCHAR(100) NOT NULL,
 			message TEXT NOT NULL,
 			date DATE NOT NULL,
-			user_id INT(11) NOT NULL,
+			id INT(11) NOT NULL,
 			FOREIGN KEY fknsid(user_id) REFERENCES users(user_id)
 			ON DELETE CASCADE
 			ON UPDATE CASCADE,

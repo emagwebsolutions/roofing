@@ -37,7 +37,7 @@ const populateUserTabs = (data,Table,formatDate,id) => {
         <ul>
             <li class="col-100">${formatDate(v.date)}</li>
             <li class="col-600">${v.message.substring(0,50)}......</li>
-            <li class="col-100">
+            <li class="col-100 flex gap-2">
                 <i class="fa fa-edit edit-note cursor" title="EDIT" data-id="${v.note_id}"></i>
                 <i class="fa fa-trash delete-note cursor" title="DELETE" data-id="${v.note_id}"></i>
             </li>
@@ -481,6 +481,29 @@ document.addEventListener('click', e => {
  
   
     }
+
+
+
+
+
+    if(e.target.matches('.delete-note')){
+        const  id  = e.target.dataset.id
+        const user_id = classSelector('uid').value
+
+        if(confirm('Are you sure you want to delete!')){
+            fetch(`router.php?controller=Note&task=delete_note&note_id=${id}`)
+
+            getUsers( data => {
+                populateUserTabs(data,Table,formatDate,user_id)
+            })
+        }
+        else{ }
+ 
+  
+    }
+
+
+
 
     if(e.target.matches('.checkClick')) {
         const deleteUserPrivilege = async () => {
